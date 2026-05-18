@@ -11,19 +11,19 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="MedBook Login"
+        android:text="Create Account"
         android:textSize="28sp"
         android:textStyle="bold"
         android:layout_marginBottom="24dp" />
 
     <EditText
-        android:id="@+id/emailInput"
+        android:id="@+id/registerEmailInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Email" />
 
     <EditText
-        android:id="@+id/passwordInput"
+        android:id="@+id/registerPasswordInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Password"
@@ -31,24 +31,10 @@
         android:layout_marginTop="12dp" />
 
     <Button
-        android:id="@+id/loginBtn"
+        android:id="@+id/registerBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login"
+        android:text="Register"
         android:layout_marginTop="20dp" />
-
-    <Button
-        android:id="@+id/guestBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Continue as Guest"
-        android:layout_marginTop="10dp" />
-
-    <Button
-        android:id="@+id/goToRegisterBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Create Account"
-        android:layout_marginTop="10dp" />
 
 </LinearLayout>

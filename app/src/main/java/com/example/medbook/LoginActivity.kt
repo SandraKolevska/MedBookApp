@@ -23,6 +23,7 @@ class LoginActivity : AppCompatActivity() {
 
         val loginBtn = findViewById<Button>(R.id.loginBtn)
         val guestBtn = findViewById<Button>(R.id.guestBtn)
+        val goToRegisterBtn = findViewById<Button>(R.id.goToRegisterBtn)
 
         // EMAIL LOGIN
         loginBtn.setOnClickListener {
@@ -98,6 +99,14 @@ class LoginActivity : AppCompatActivity() {
                         ).show()
                     }
                 }
+        }
+
+        // OPEN REGISTER SCREEN
+        goToRegisterBtn.setOnClickListener {
+
+            startActivity(
+                Intent(this, RegisterActivity::class.java)
+            )
         }
     }
 }
