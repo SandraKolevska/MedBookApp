@@ -1,13 +1,16 @@
 package com.example.medbook
 
+import android.app.DatePickerDialog
 import android.graphics.Color
 import android.os.Bundle
 import android.widget.Button
+import android.widget.GridLayout
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.FirebaseFirestore
+import java.util.Calendar
 
 class DoctorDetailsActivity : AppCompatActivity() {
 
@@ -18,6 +21,8 @@ class DoctorDetailsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         setContentView(R.layout.activity_doctor_details)
 
@@ -41,31 +46,14 @@ class DoctorDetailsActivity : AppCompatActivity() {
         val doctorFee =
             findViewById<TextView>(R.id.detailsDoctorFee)
 
-        // DATE BUTTONS
-        val date1Btn =
-            findViewById<Button>(R.id.date1Btn)
+        val selectDateBtn =
+            findViewById<Button>(R.id.selectDateBtn)
 
-        val date2Btn =
-            findViewById<Button>(R.id.date2Btn)
+        val selectedDateText =
+            findViewById<TextView>(R.id.selectedDateText)
 
-        val date3Btn =
-            findViewById<Button>(R.id.date3Btn)
-
-        val date4Btn =
-            findViewById<Button>(R.id.date4Btn)
-
-        // SLOT BUTTONS
-        val slot1Btn =
-            findViewById<Button>(R.id.slot1Btn)
-
-        val slot2Btn =
-            findViewById<Button>(R.id.slot2Btn)
-
-        val slot3Btn =
-            findViewById<Button>(R.id.slot3Btn)
-
-        val slot4Btn =
-            findViewById<Button>(R.id.slot4Btn)
+        val slotsContainer =
+            findViewById<GridLayout>(R.id.slotsContainer)
 
         val bookAppointmentBtn =
             findViewById<Button>(R.id.bookAppointmentBtn)
@@ -94,134 +82,36 @@ class DoctorDetailsActivity : AppCompatActivity() {
 
         doctorImage.setImageResource(image)
 
-        // DATE SELECTION
-        date1Btn.setOnClickListener {
+        // CALENDAR DATE PICKER
+        selectDateBtn.setOnClickListener {
 
-            selectedDate = "May 18"
+            val calendar = Calendar.getInstance()
 
-            resetDateButtons(
-                date1Btn,
-                date2Btn,
-                date3Btn,
-                date4Btn
+            val year = calendar.get(Calendar.YEAR)
+            val month = calendar.get(Calendar.MONTH)
+            val day = calendar.get(Calendar.DAY_OF_MONTH)
+
+            val datePickerDialog = DatePickerDialog(
+                this,
+                { _, selectedYear, selectedMonth, selectedDay ->
+
+                    selectedDate =
+                        "$selectedDay/${selectedMonth + 1}/$selectedYear"
+
+                    selectedDateText.text =
+                        "Selected Date: $selectedDate"
+
+                    loadSlots(
+                        slotsContainer,
+                        name
+                    )
+                },
+                year,
+                month,
+                day
             )
 
-            date1Btn.setBackgroundColor(
-                Color.parseColor("#4CAF50")
-            )
-        }
-
-        date2Btn.setOnClickListener {
-
-            selectedDate = "May 19"
-
-            resetDateButtons(
-                date1Btn,
-                date2Btn,
-                date3Btn,
-                date4Btn
-            )
-
-            date2Btn.setBackgroundColor(
-                Color.parseColor("#4CAF50")
-            )
-        }
-
-        date3Btn.setOnClickListener {
-
-            selectedDate = "May 20"
-
-            resetDateButtons(
-                date1Btn,
-                date2Btn,
-                date3Btn,
-                date4Btn
-            )
-
-            date3Btn.setBackgroundColor(
-                Color.parseColor("#4CAF50")
-            )
-        }
-
-        date4Btn.setOnClickListener {
-
-            selectedDate = "May 21"
-
-            resetDateButtons(
-                date1Btn,
-                date2Btn,
-                date3Btn,
-                date4Btn
-            )
-
-            date4Btn.setBackgroundColor(
-                Color.parseColor("#4CAF50")
-            )
-        }
-
-        // SLOT SELECTION
-        slot1Btn.setOnClickListener {
-
-            selectedSlot = "09:00 AM"
-
-            resetSlotButtons(
-                slot1Btn,
-                slot2Btn,
-                slot3Btn,
-                slot4Btn
-            )
-
-            slot1Btn.setBackgroundColor(
-                Color.parseColor("#2196F3")
-            )
-        }
-
-        slot2Btn.setOnClickListener {
-
-            selectedSlot = "10:00 AM"
-
-            resetSlotButtons(
-                slot1Btn,
-                slot2Btn,
-                slot3Btn,
-                slot4Btn
-            )
-
-            slot2Btn.setBackgroundColor(
-                Color.parseColor("#2196F3")
-            )
-        }
-
-        slot3Btn.setOnClickListener {
-
-            selectedSlot = "11:00 AM"
-
-            resetSlotButtons(
-                slot1Btn,
-                slot2Btn,
-                slot3Btn,
-                slot4Btn
-            )
-
-            slot3Btn.setBackgroundColor(
-                Color.parseColor("#2196F3")
-            )
-        }
-
-        slot4Btn.setOnClickListener {
-
-            selectedSlot = "12:00 PM"
-
-            resetSlotButtons(
-                slot1Btn,
-                slot2Btn,
-                slot3Btn,
-                slot4Btn
-            )
-
-            slot4Btn.setBackgroundColor(
-                Color.parseColor("#2196F3")
-            )
+            datePickerDialog.show()
         }
 
         // BOOK APPOINTMENT
@@ -242,6 +132,7 @@ class DoctorDetailsActivity : AppCompatActivity() {
 
                 firestore.collection("appointments")
                     .add(appointment)
+
                     .addOnSuccessListener {
 
                         Toast.makeText(
@@ -249,6 +140,11 @@ class DoctorDetailsActivity : AppCompatActivity() {
                             "Appointment saved successfully",
                             Toast.LENGTH_LONG
                         ).show()
+
+                        loadSlots(
+                            slotsContainer,
+                            name
+                        )
                     }
 
                     .addOnFailureListener {
@@ -271,29 +167,109 @@ class DoctorDetailsActivity : AppCompatActivity() {
         }
     }
 
-    private fun resetDateButtons(
-        btn1: Button,
-        btn2: Button,
-        btn3: Button,
-        btn4: Button
+    private fun loadSlots(
+        slotsContainer: GridLayout,
+        doctorName: String?
     ) {
 
-        btn1.setBackgroundColor(Color.LTGRAY)
-        btn2.setBackgroundColor(Color.LTGRAY)
-        btn3.setBackgroundColor(Color.LTGRAY)
-        btn4.setBackgroundColor(Color.LTGRAY)
+        slotsContainer.removeAllViews()
+
+        val slotTimes = listOf(
+            "08:00 AM",
+            "08:30 AM",
+            "09:00 AM",
+            "09:30 AM",
+            "10:00 AM",
+            "10:30 AM",
+            "11:00 AM",
+            "11:30 AM",
+            "12:00 PM",
+            "12:30 PM",
+            "01:00 PM",
+            "01:30 PM",
+            "02:00 PM",
+            "02:30 PM",
+            "03:00 PM",
+            "03:30 PM"
+        )
+
+        for (slot in slotTimes) {
+
+            val slotButton = Button(this)
+
+            slotButton.text = slot
+
+            val params = GridLayout.LayoutParams()
+
+            params.width =
+                GridLayout.LayoutParams.WRAP_CONTENT
+
+            params.height =
+                GridLayout.LayoutParams.WRAP_CONTENT
+
+            params.columnSpec =
+                GridLayout.spec(GridLayout.UNDEFINED)
+
+            params.setMargins(
+                8,
+                8,
+                8,
+                8
+            )
+
+            slotButton.layoutParams = params
+
+            slotButton.textSize = 14f
+
+            slotButton.setPadding(
+                10,
+                10,
+                10,
+                10
+            )
+
+            firestore.collection("appointments")
+                .whereEqualTo("doctorName", doctorName)
+                .whereEqualTo("date", selectedDate)
+                .whereEqualTo("slot", slot)
+                .get()
+
+                .addOnSuccessListener { documents ->
+
+                    if (!documents.isEmpty) {
+
+                        slotButton.isEnabled = false
+
+                        slotButton.setBackgroundColor(
+                            Color.LTGRAY
+                        )
+
+                        slotButton.setTextColor(
+                            Color.DKGRAY
+                        )
+                    }
+                }
+
+            slotButton.setOnClickListener {
+
+                if (slotButton.isEnabled) {
+
+                    selectedSlot = slot
+
+                    Toast.makeText(
+                        this,
+                        "Selected: $slot",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+
+            slotsContainer.addView(slotButton)
+        }
     }
 
-    private fun resetSlotButtons(
-        btn1: Button,
-        btn2: Button,
-        btn3: Button,
-        btn4: Button
-    ) {
-
-        btn1.setBackgroundColor(Color.LTGRAY)
-        btn2.setBackgroundColor(Color.LTGRAY)
-        btn3.setBackgroundColor(Color.LTGRAY)
-        btn4.setBackgroundColor(Color.LTGRAY)
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
     }
 }

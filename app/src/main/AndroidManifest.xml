@@ -9,6 +9,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MedBook">
         <activity
+            android:name=".MyAppointmentsActivity"
+            android:exported="false" />
+        <activity
             android:name=".DoctorDetailsActivity"
             android:exported="false" />
         <activity

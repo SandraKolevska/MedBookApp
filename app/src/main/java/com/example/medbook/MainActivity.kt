@@ -1,6 +1,8 @@
 package com.example.medbook
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -9,6 +11,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var doctorAdapter: DoctorAdapter
+    private lateinit var myAppointmentsBtn: Button
 
     private val doctorList = listOf(
 
@@ -113,6 +116,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
+
+        myAppointmentsBtn =
+            findViewById(R.id.myAppointmentsBtn)
+
+        myAppointmentsBtn.setOnClickListener {
+
+            startActivity(
+                Intent(this, MyAppointmentsActivity::class.java)
+            )
+        }
 
         recyclerView =
             findViewById(R.id.recyclerViewDoctors)

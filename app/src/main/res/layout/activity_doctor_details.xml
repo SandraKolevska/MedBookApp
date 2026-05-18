@@ -105,57 +105,30 @@
 
         </LinearLayout>
 
-        <!-- AVAILABLE DATES -->
+        <!-- SELECT DATE -->
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Available Dates"
+            android:text="Appointment Date"
             android:textSize="24sp"
             android:textStyle="bold"
             android:layout_marginTop="30dp" />
 
-        <HorizontalScrollView
+        <Button
+            android:id="@+id/selectDateBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scrollbars="none">
+            android:text="Select Date"
+            android:layout_marginTop="16dp" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="16dp">
-
-                <Button
-                    android:id="@+id/date1Btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="May 18" />
-
-                <Button
-                    android:id="@+id/date2Btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="May 19"
-                    android:layout_marginStart="10dp" />
-
-                <Button
-                    android:id="@+id/date3Btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="May 20"
-                    android:layout_marginStart="10dp" />
-
-                <Button
-                    android:id="@+id/date4Btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="May 21"
-                    android:layout_marginStart="10dp" />
-
-            </LinearLayout>
-
-        </HorizontalScrollView>
+        <TextView
+            android:id="@+id/selectedDateText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No date selected"
+            android:textSize="18sp"
+            android:layout_marginTop="12dp" />
 
         <!-- AVAILABLE TIME SLOTS -->
 
@@ -167,40 +140,12 @@
             android:textStyle="bold"
             android:layout_marginTop="30dp" />
 
-        <LinearLayout
+        <GridLayout
+            android:id="@+id/slotsContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="16dp">
-
-            <Button
-                android:id="@+id/slot1Btn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="09:00 AM" />
-
-            <Button
-                android:id="@+id/slot2Btn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="10:00 AM"
-                android:layout_marginTop="10dp" />
-
-            <Button
-                android:id="@+id/slot3Btn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="11:00 AM"
-                android:layout_marginTop="10dp" />
-
-            <Button
-                android:id="@+id/slot4Btn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="12:00 PM"
-                android:layout_marginTop="10dp" />
-
-        </LinearLayout>
+            android:columnCount="4"
+            android:layout_marginTop="16dp" />
 
         <Button
             android:id="@+id/bookAppointmentBtn"
