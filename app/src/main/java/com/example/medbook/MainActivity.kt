@@ -2,7 +2,10 @@ package com.example.medbook
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.Button
+import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -12,8 +15,26 @@ class MainActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var doctorAdapter: DoctorAdapter
     private lateinit var myAppointmentsBtn: Button
+    private lateinit var searchDoctorsInput: EditText
 
-    private val doctorList = listOf(
+    private lateinit var allDoctorsBtn: Button
+    private lateinit var cardiologistBtn: Button
+    private lateinit var dentistBtn: Button
+    private lateinit var neurologistBtn: Button
+    private lateinit var pediatricianBtn: Button
+    private lateinit var dermatologistBtn: Button
+    private lateinit var orthopedicBtn: Button
+    private lateinit var gynecologistBtn: Button
+    private lateinit var psychiatristBtn: Button
+    private lateinit var ophthalmologistBtn: Button
+    private lateinit var entBtn: Button
+    private lateinit var radiologistBtn: Button
+    private lateinit var surgeonBtn: Button
+
+    private var filteredDoctorList =
+        mutableListOf<Doctor>()
+
+    private val doctorList = mutableListOf(
 
         Doctor(
             "Dr. Sarah Johnson",
@@ -48,7 +69,7 @@ class MainActivity : AppCompatActivity() {
         ),
 
         Doctor(
-            "Dr. Olivia Taylor",
+            "Dr. Christopher Taylor",
             "Dermatologist",
             "⭐ 4.8",
             "8 years experience",
@@ -64,7 +85,7 @@ class MainActivity : AppCompatActivity() {
         ),
 
         Doctor(
-            "Dr. Sophia Martinez",
+            "Dr. Alexander Martinez",
             "Gynecologist",
             "⭐ 4.9",
             "11 years experience",
@@ -72,7 +93,7 @@ class MainActivity : AppCompatActivity() {
         ),
 
         Doctor(
-            "Dr. Daniel Thomas",
+            "Dr. Emma Thomas",
             "Psychiatrist",
             "⭐ 4.6",
             "6 years experience",
@@ -80,7 +101,7 @@ class MainActivity : AppCompatActivity() {
         ),
 
         Doctor(
-            "Dr. Isabella White",
+            "Dr. Robert White",
             "Ophthalmologist",
             "⭐ 4.8",
             "10 years experience",
@@ -88,7 +109,7 @@ class MainActivity : AppCompatActivity() {
         ),
 
         Doctor(
-            "Dr. William Harris",
+            "Dr. Sophia Harris",
             "ENT Specialist",
             "⭐ 4.7",
             "7 years experience",
@@ -96,7 +117,7 @@ class MainActivity : AppCompatActivity() {
         ),
 
         Doctor(
-            "Dr. Mia Clark",
+            "Dr. David Clark",
             "Radiologist",
             "⭐ 4.9",
             "13 years experience",
@@ -117,6 +138,48 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main)
 
+        searchDoctorsInput =
+            findViewById(R.id.searchDoctorsInput)
+
+        allDoctorsBtn =
+            findViewById(R.id.allDoctorsBtn)
+
+        cardiologistBtn =
+            findViewById(R.id.cardiologistBtn)
+
+        dentistBtn =
+            findViewById(R.id.dentistBtn)
+
+        neurologistBtn =
+            findViewById(R.id.neurologistBtn)
+
+        pediatricianBtn =
+            findViewById(R.id.pediatricianBtn)
+
+        dermatologistBtn =
+            findViewById(R.id.dermatologistBtn)
+
+        orthopedicBtn =
+            findViewById(R.id.orthopedicBtn)
+
+        gynecologistBtn =
+            findViewById(R.id.gynecologistBtn)
+
+        psychiatristBtn =
+            findViewById(R.id.psychiatristBtn)
+
+        ophthalmologistBtn =
+            findViewById(R.id.ophthalmologistBtn)
+
+        entBtn =
+            findViewById(R.id.entBtn)
+
+        radiologistBtn =
+            findViewById(R.id.radiologistBtn)
+
+        surgeonBtn =
+            findViewById(R.id.surgeonBtn)
+
         myAppointmentsBtn =
             findViewById(R.id.myAppointmentsBtn)
 
@@ -136,7 +199,272 @@ class MainActivity : AppCompatActivity() {
         doctorAdapter =
             DoctorAdapter(doctorList)
 
+        filteredDoctorList.addAll(doctorList)
+
         recyclerView.adapter =
             doctorAdapter
+
+        // SEARCH SYSTEM
+        searchDoctorsInput.addTextChangedListener(
+            object : TextWatcher {
+
+                override fun beforeTextChanged(
+                    s: CharSequence?,
+                    start: Int,
+                    count: Int,
+                    after: Int
+                ) {
+                }
+
+                override fun onTextChanged(
+                    s: CharSequence?,
+                    start: Int,
+                    before: Int,
+                    count: Int
+                ) {
+
+                    val searchText =
+                        s.toString().lowercase()
+
+                    val filteredList =
+                        filteredDoctorList.filter {
+
+                            it.name.lowercase()
+                                .contains(searchText)
+
+                                    ||
+
+                                    it.specialization.lowercase()
+                                        .contains(searchText)
+                        }
+
+                    doctorAdapter =
+                        DoctorAdapter(filteredList)
+
+                    recyclerView.adapter =
+                        doctorAdapter
+                }
+
+                override fun afterTextChanged(
+                    s: Editable?
+                ) {
+                }
+            }
+        )
+
+        // CATEGORY FILTERS
+
+        allDoctorsBtn.setOnClickListener {
+
+            doctorAdapter =
+                DoctorAdapter(doctorList)
+
+            recyclerView.adapter =
+                doctorAdapter
+        }
+
+        cardiologistBtn.setOnClickListener {
+
+            val filtered =
+                doctorList.filter {
+
+                    it.specialization.contains(
+                        "Cardiologist"
+                    )
+                }
+
+            doctorAdapter =
+                DoctorAdapter(filtered)
+
+            recyclerView.adapter =
+                doctorAdapter
+        }
+
+        dentistBtn.setOnClickListener {
+
+            val filtered =
+                doctorList.filter {
+
+                    it.specialization.contains(
+                        "Dentist"
+                    )
+                }
+
+            doctorAdapter =
+                DoctorAdapter(filtered)
+
+            recyclerView.adapter =
+                doctorAdapter
+        }
+
+        neurologistBtn.setOnClickListener {
+
+            val filtered =
+                doctorList.filter {
+
+                    it.specialization.contains(
+                        "Neurologist"
+                    )
+                }
+
+            doctorAdapter =
+                DoctorAdapter(filtered)
+
+            recyclerView.adapter =
+                doctorAdapter
+        }
+
+        pediatricianBtn.setOnClickListener {
+
+            val filtered =
+                doctorList.filter {
+
+                    it.specialization.contains(
+                        "Pediatrician"
+                    )
+                }
+
+            doctorAdapter =
+                DoctorAdapter(filtered)
+
+            recyclerView.adapter =
+                doctorAdapter
+        }
+
+        dermatologistBtn.setOnClickListener {
+
+            val filtered =
+                doctorList.filter {
+
+                    it.specialization.contains(
+                        "Dermatologist"
+                    )
+                }
+
+            doctorAdapter =
+                DoctorAdapter(filtered)
+
+            recyclerView.adapter =
+                doctorAdapter
+        }
+
+        orthopedicBtn.setOnClickListener {
+
+            val filtered =
+                doctorList.filter {
+
+                    it.specialization.contains(
+                        "Orthopedic"
+                    )
+                }
+
+            doctorAdapter =
+                DoctorAdapter(filtered)
+
+            recyclerView.adapter =
+                doctorAdapter
+        }
+
+        gynecologistBtn.setOnClickListener {
+
+            val filtered =
+                doctorList.filter {
+
+                    it.specialization.contains(
+                        "Gynecologist"
+                    )
+                }
+
+            doctorAdapter =
+                DoctorAdapter(filtered)
+
+            recyclerView.adapter =
+                doctorAdapter
+        }
+
+        psychiatristBtn.setOnClickListener {
+
+            val filtered =
+                doctorList.filter {
+
+                    it.specialization.contains(
+                        "Psychiatrist"
+                    )
+                }
+
+            doctorAdapter =
+                DoctorAdapter(filtered)
+
+            recyclerView.adapter =
+                doctorAdapter
+        }
+
+        ophthalmologistBtn.setOnClickListener {
+
+            val filtered =
+                doctorList.filter {
+
+                    it.specialization.contains(
+                        "Ophthalmologist"
+                    )
+                }
+
+            doctorAdapter =
+                DoctorAdapter(filtered)
+
+            recyclerView.adapter =
+                doctorAdapter
+        }
+
+        entBtn.setOnClickListener {
+
+            val filtered =
+                doctorList.filter {
+
+                    it.specialization.contains(
+                        "ENT"
+                    )
+                }
+
+            doctorAdapter =
+                DoctorAdapter(filtered)
+
+            recyclerView.adapter =
+                doctorAdapter
+        }
+
+        radiologistBtn.setOnClickListener {
+
+            val filtered =
+                doctorList.filter {
+
+                    it.specialization.contains(
+                        "Radiologist"
+                    )
+                }
+
+            doctorAdapter =
+                DoctorAdapter(filtered)
+
+            recyclerView.adapter =
+                doctorAdapter
+        }
+
+        surgeonBtn.setOnClickListener {
+
+            val filtered =
+                doctorList.filter {
+
+                    it.specialization.contains(
+                        "Surgeon"
+                    )
+                }
+
+            doctorAdapter =
+                DoctorAdapter(filtered)
+
+            recyclerView.adapter =
+                doctorAdapter
+        }
     }
 }

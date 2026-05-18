@@ -56,6 +56,7 @@ class MyAppointmentsActivity : AppCompatActivity() {
 
                     val appointment =
                         document.toObject(Appointment::class.java)
+                    appointment.id = document.id
 
                     appointmentList.add(appointment)
                 }

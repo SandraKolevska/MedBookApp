@@ -15,6 +15,121 @@
         android:textStyle="bold"
         android:layout_marginBottom="16dp" />
 
+    <EditText
+        android:id="@+id/searchDoctorsInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Search doctors..."
+        android:padding="12dp"
+        android:background="#FFFFFF"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="16dp" />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:layout_marginBottom="16dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/allDoctorsBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="All" />
+
+            <Button
+                android:id="@+id/cardiologistBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cardio"
+                android:layout_marginStart="8dp" />
+
+            <Button
+                android:id="@+id/dentistBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dentist"
+                android:layout_marginStart="8dp" />
+
+            <Button
+                android:id="@+id/pediatricianBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pediatric"
+                android:layout_marginStart="8dp" />
+
+            <Button
+                android:id="@+id/neurologistBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Neuro"
+                android:layout_marginStart="8dp" />
+
+            <Button
+                android:id="@+id/dermatologistBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dermatology"
+                android:layout_marginStart="8dp" />
+
+            <Button
+                android:id="@+id/orthopedicBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Orthopedic"
+                android:layout_marginStart="8dp" />
+
+            <Button
+                android:id="@+id/gynecologistBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gynecology"
+                android:layout_marginStart="8dp" />
+
+            <Button
+                android:id="@+id/psychiatristBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Psychiatry"
+                android:layout_marginStart="8dp" />
+
+            <Button
+                android:id="@+id/ophthalmologistBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Eye"
+                android:layout_marginStart="8dp" />
+
+            <Button
+                android:id="@+id/entBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ENT"
+                android:layout_marginStart="8dp" />
+
+            <Button
+                android:id="@+id/radiologistBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Radiology"
+                android:layout_marginStart="8dp" />
+
+            <Button
+                android:id="@+id/surgeonBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Surgery"
+                android:layout_marginStart="8dp" />
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
     <Button
         android:id="@+id/myAppointmentsBtn"
         android:layout_width="match_parent"
