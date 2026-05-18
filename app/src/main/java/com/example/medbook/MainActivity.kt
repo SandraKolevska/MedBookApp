@@ -9,6 +9,7 @@ import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import java.util.Calendar
 
 class MainActivity : AppCompatActivity() {
 
@@ -41,7 +42,30 @@ class MainActivity : AppCompatActivity() {
             "Cardiologist",
             "⭐ 4.9",
             "10 years experience",
-            R.drawable.doctor2
+            R.drawable.doctor2,
+
+            listOf(
+                "08:00 AM",
+                "08:30 AM",
+                "09:00 AM",
+                "09:30 AM",
+                "10:00 AM",
+                "10:30 AM",
+                "11:00 AM",
+                "11:30 AM",
+                "12:00 PM",
+                "12:30 PM",
+                "01:00 PM",
+                "01:30 PM",
+                "02:00 PM",
+                "02:30 PM",
+                "03:00 PM",
+                "03:30 PM"
+            ),
+
+            listOf(
+                Calendar.SUNDAY
+            )
         ),
 
         Doctor(
@@ -49,7 +73,31 @@ class MainActivity : AppCompatActivity() {
             "Dentist",
             "⭐ 4.8",
             "7 years experience",
-            R.drawable.doctor3
+            R.drawable.doctor3,
+
+            listOf(
+                "10:00 AM",
+                "10:30 AM",
+                "11:00 AM",
+                "11:30 AM",
+                "12:00 PM",
+                "12:30 PM",
+                "01:00 PM",
+                "01:30 PM",
+                "02:00 PM",
+                "02:30 PM",
+                "03:00 PM",
+                "03:30 PM",
+                "04:00 PM",
+                "04:30 PM",
+                "05:00 PM",
+                "05:30 PM"
+            ),
+
+            listOf(
+                Calendar.WEDNESDAY,
+                Calendar.SUNDAY
+            )
         ),
 
         Doctor(
@@ -57,7 +105,25 @@ class MainActivity : AppCompatActivity() {
             "Pediatrician",
             "⭐ 4.7",
             "5 years experience",
-            R.drawable.doctor4
+            R.drawable.doctor4,
+
+            listOf(
+                "09:00 AM",
+                "09:30 AM",
+                "10:00 AM",
+                "10:30 AM",
+                "11:00 AM",
+                "11:30 AM",
+                "12:00 PM",
+                "12:30 PM",
+                "01:00 PM",
+                "01:30 PM"
+            ),
+
+            listOf(
+                Calendar.SATURDAY,
+                Calendar.SUNDAY
+            )
         ),
 
         Doctor(
@@ -65,7 +131,26 @@ class MainActivity : AppCompatActivity() {
             "Neurologist",
             "⭐ 4.9",
             "12 years experience",
-            R.drawable.doctor5
+            R.drawable.doctor5,
+
+            listOf(
+                "11:00 AM",
+                "11:30 AM",
+                "12:00 PM",
+                "12:30 PM",
+                "01:00 PM",
+                "01:30 PM",
+                "02:00 PM",
+                "02:30 PM",
+                "03:00 PM",
+                "03:30 PM",
+                "04:00 PM",
+                "04:30 PM"
+            ),
+
+            listOf(
+                Calendar.SUNDAY
+            )
         ),
 
         Doctor(
@@ -73,7 +158,22 @@ class MainActivity : AppCompatActivity() {
             "Dermatologist",
             "⭐ 4.8",
             "8 years experience",
-            R.drawable.doctor6
+            R.drawable.doctor6,
+
+            listOf(
+                "08:00 AM",
+                "08:30 AM",
+                "09:00 AM",
+                "09:30 AM",
+                "10:00 AM",
+                "10:30 AM",
+                "11:00 AM",
+                "11:30 AM"
+            ),
+
+            listOf(
+                Calendar.MONDAY
+            )
         ),
 
         Doctor(
@@ -81,7 +181,23 @@ class MainActivity : AppCompatActivity() {
             "Orthopedic",
             "⭐ 4.7",
             "9 years experience",
-            R.drawable.doctor7
+            R.drawable.doctor7,
+
+            listOf(
+                "01:00 PM",
+                "01:30 PM",
+                "02:00 PM",
+                "02:30 PM",
+                "03:00 PM",
+                "03:30 PM",
+                "04:00 PM",
+                "04:30 PM",
+                "05:00 PM"
+            ),
+
+            listOf(
+                Calendar.FRIDAY
+            )
         ),
 
         Doctor(
@@ -89,7 +205,22 @@ class MainActivity : AppCompatActivity() {
             "Gynecologist",
             "⭐ 4.9",
             "11 years experience",
-            R.drawable.doctor8
+            R.drawable.doctor8,
+
+            listOf(
+                "09:00 AM",
+                "09:30 AM",
+                "10:00 AM",
+                "10:30 AM",
+                "11:00 AM",
+                "11:30 AM",
+                "12:00 PM",
+                "12:30 PM"
+            ),
+
+            listOf(
+                Calendar.SUNDAY
+            )
         ),
 
         Doctor(
@@ -97,7 +228,21 @@ class MainActivity : AppCompatActivity() {
             "Psychiatrist",
             "⭐ 4.6",
             "6 years experience",
-            R.drawable.doctor9
+            R.drawable.doctor9,
+
+            listOf(
+                "02:00 PM",
+                "02:30 PM",
+                "03:00 PM",
+                "03:30 PM",
+                "04:00 PM",
+                "04:30 PM",
+                "05:00 PM"
+            ),
+
+            listOf(
+                Calendar.THURSDAY
+            )
         ),
 
         Doctor(
@@ -105,7 +250,21 @@ class MainActivity : AppCompatActivity() {
             "Ophthalmologist",
             "⭐ 4.8",
             "10 years experience",
-            R.drawable.doctor10
+            R.drawable.doctor10,
+
+            listOf(
+                "08:00 AM",
+                "08:30 AM",
+                "09:00 AM",
+                "09:30 AM",
+                "10:00 AM",
+                "10:30 AM",
+                "11:00 AM"
+            ),
+
+            listOf(
+                Calendar.SUNDAY
+            )
         ),
 
         Doctor(
@@ -113,7 +272,21 @@ class MainActivity : AppCompatActivity() {
             "ENT Specialist",
             "⭐ 4.7",
             "7 years experience",
-            R.drawable.doctor11
+            R.drawable.doctor11,
+
+            listOf(
+                "12:00 PM",
+                "12:30 PM",
+                "01:00 PM",
+                "01:30 PM",
+                "02:00 PM",
+                "02:30 PM",
+                "03:00 PM"
+            ),
+
+            listOf(
+                Calendar.TUESDAY
+            )
         ),
 
         Doctor(
@@ -121,7 +294,21 @@ class MainActivity : AppCompatActivity() {
             "Radiologist",
             "⭐ 4.9",
             "13 years experience",
-            R.drawable.doctor12
+            R.drawable.doctor12,
+
+            listOf(
+                "10:00 AM",
+                "10:30 AM",
+                "11:00 AM",
+                "11:30 AM",
+                "12:00 PM",
+                "12:30 PM",
+                "01:00 PM"
+            ),
+
+            listOf(
+                Calendar.SATURDAY
+            )
         ),
 
         Doctor(
@@ -129,7 +316,25 @@ class MainActivity : AppCompatActivity() {
             "General Surgeon",
             "⭐ 5.0",
             "15 years experience",
-            R.drawable.doctor14
+            R.drawable.doctor14,
+
+            listOf(
+                "07:00 AM",
+                "07:30 AM",
+                "08:00 AM",
+                "08:30 AM",
+                "09:00 AM",
+                "09:30 AM",
+                "10:00 AM",
+                "10:30 AM",
+                "11:00 AM",
+                "11:30 AM"
+            ),
+
+            listOf(
+                Calendar.FRIDAY,
+                Calendar.SUNDAY
+            )
         )
     )
 
@@ -204,7 +409,6 @@ class MainActivity : AppCompatActivity() {
         recyclerView.adapter =
             doctorAdapter
 
-        // SEARCH SYSTEM
         searchDoctorsInput.addTextChangedListener(
             object : TextWatcher {
 
@@ -251,220 +455,5 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         )
-
-        // CATEGORY FILTERS
-
-        allDoctorsBtn.setOnClickListener {
-
-            doctorAdapter =
-                DoctorAdapter(doctorList)
-
-            recyclerView.adapter =
-                doctorAdapter
-        }
-
-        cardiologistBtn.setOnClickListener {
-
-            val filtered =
-                doctorList.filter {
-
-                    it.specialization.contains(
-                        "Cardiologist"
-                    )
-                }
-
-            doctorAdapter =
-                DoctorAdapter(filtered)
-
-            recyclerView.adapter =
-                doctorAdapter
-        }
-
-        dentistBtn.setOnClickListener {
-
-            val filtered =
-                doctorList.filter {
-
-                    it.specialization.contains(
-                        "Dentist"
-                    )
-                }
-
-            doctorAdapter =
-                DoctorAdapter(filtered)
-
-            recyclerView.adapter =
-                doctorAdapter
-        }
-
-        neurologistBtn.setOnClickListener {
-
-            val filtered =
-                doctorList.filter {
-
-                    it.specialization.contains(
-                        "Neurologist"
-                    )
-                }
-
-            doctorAdapter =
-                DoctorAdapter(filtered)
-
-            recyclerView.adapter =
-                doctorAdapter
-        }
-
-        pediatricianBtn.setOnClickListener {
-
-            val filtered =
-                doctorList.filter {
-
-                    it.specialization.contains(
-                        "Pediatrician"
-                    )
-                }
-
-            doctorAdapter =
-                DoctorAdapter(filtered)
-
-            recyclerView.adapter =
-                doctorAdapter
-        }
-
-        dermatologistBtn.setOnClickListener {
-
-            val filtered =
-                doctorList.filter {
-
-                    it.specialization.contains(
-                        "Dermatologist"
-                    )
-                }
-
-            doctorAdapter =
-                DoctorAdapter(filtered)
-
-            recyclerView.adapter =
-                doctorAdapter
-        }
-
-        orthopedicBtn.setOnClickListener {
-
-            val filtered =
-                doctorList.filter {
-
-                    it.specialization.contains(
-                        "Orthopedic"
-                    )
-                }
-
-            doctorAdapter =
-                DoctorAdapter(filtered)
-
-            recyclerView.adapter =
-                doctorAdapter
-        }
-
-        gynecologistBtn.setOnClickListener {
-
-            val filtered =
-                doctorList.filter {
-
-                    it.specialization.contains(
-                        "Gynecologist"
-                    )
-                }
-
-            doctorAdapter =
-                DoctorAdapter(filtered)
-
-            recyclerView.adapter =
-                doctorAdapter
-        }
-
-        psychiatristBtn.setOnClickListener {
-
-            val filtered =
-                doctorList.filter {
-
-                    it.specialization.contains(
-                        "Psychiatrist"
-                    )
-                }
-
-            doctorAdapter =
-                DoctorAdapter(filtered)
-
-            recyclerView.adapter =
-                doctorAdapter
-        }
-
-        ophthalmologistBtn.setOnClickListener {
-
-            val filtered =
-                doctorList.filter {
-
-                    it.specialization.contains(
-                        "Ophthalmologist"
-                    )
-                }
-
-            doctorAdapter =
-                DoctorAdapter(filtered)
-
-            recyclerView.adapter =
-                doctorAdapter
-        }
-
-        entBtn.setOnClickListener {
-
-            val filtered =
-                doctorList.filter {
-
-                    it.specialization.contains(
-                        "ENT"
-                    )
-                }
-
-            doctorAdapter =
-                DoctorAdapter(filtered)
-
-            recyclerView.adapter =
-                doctorAdapter
-        }
-
-        radiologistBtn.setOnClickListener {
-
-            val filtered =
-                doctorList.filter {
-
-                    it.specialization.contains(
-                        "Radiologist"
-                    )
-                }
-
-            doctorAdapter =
-                DoctorAdapter(filtered)
-
-            recyclerView.adapter =
-                doctorAdapter
-        }
-
-        surgeonBtn.setOnClickListener {
-
-            val filtered =
-                doctorList.filter {
-
-                    it.specialization.contains(
-                        "Surgeon"
-                    )
-                }
-
-            doctorAdapter =
-                DoctorAdapter(filtered)
-
-            recyclerView.adapter =
-                doctorAdapter
-        }
     }
 }

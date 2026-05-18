@@ -65,13 +65,15 @@ class DoctorAdapter(
         holder.doctorExperience.text =
             doctor.experience
 
-        // CLICK EVENT
         holder.itemView.setOnClickListener {
 
             val context = holder.itemView.context
 
             val intent =
-                Intent(context, DoctorDetailsActivity::class.java)
+                Intent(
+                    context,
+                    DoctorDetailsActivity::class.java
+                )
 
             intent.putExtra(
                 "doctorName",
@@ -96,6 +98,16 @@ class DoctorAdapter(
             intent.putExtra(
                 "doctorImage",
                 doctor.imageResId
+            )
+
+            intent.putStringArrayListExtra(
+                "doctorSlots",
+                ArrayList(doctor.slots)
+            )
+
+            intent.putIntegerArrayListExtra(
+                "doctorUnavailableDays",
+                ArrayList(doctor.unavailableDays)
             )
 
             context.startActivity(intent)

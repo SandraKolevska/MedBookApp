@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.Calendar
+import java.util.GregorianCalendar
 
 class DoctorDetailsActivity : AppCompatActivity() {
 
@@ -18,6 +19,10 @@ class DoctorDetailsActivity : AppCompatActivity() {
     private var selectedDate = ""
 
     private lateinit var firestore: FirebaseFirestore
+
+    private lateinit var doctorSlots: ArrayList<String>
+
+    private lateinit var unavailableDays: ArrayList<Int>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,6 +78,15 @@ class DoctorDetailsActivity : AppCompatActivity() {
         val image =
             intent.getIntExtra("doctorImage", 0)
 
+        doctorSlots =
+            intent.getStringArrayListExtra("doctorSlots")
+                ?: arrayListOf()
+
+        unavailableDays =
+            intent.getIntegerArrayListExtra(
+                "doctorUnavailableDays"
+            ) ?: arrayListOf()
+
         doctorName.text = name
         doctorSpecialization.text = specialization
         doctorRating.text = rating
@@ -82,7 +96,6 @@ class DoctorDetailsActivity : AppCompatActivity() {
 
         doctorImage.setImageResource(image)
 
-        // CALENDAR DATE PICKER
         selectDateBtn.setOnClickListener {
 
             val calendar = Calendar.getInstance()
@@ -94,6 +107,31 @@ class DoctorDetailsActivity : AppCompatActivity() {
             val datePickerDialog = DatePickerDialog(
                 this,
                 { _, selectedYear, selectedMonth, selectedDay ->
+
+                    val selectedCalendar =
+                        GregorianCalendar(
+                            selectedYear,
+                            selectedMonth,
+                            selectedDay
+                        )
+
+                    val dayOfWeek =
+                        selectedCalendar.get(
+                            Calendar.DAY_OF_WEEK
+                        )
+
+                    if (
+                        unavailableDays.contains(dayOfWeek)
+                    ) {
+
+                        Toast.makeText(
+                            this,
+                            "Doctor is unavailable on selected day",
+                            Toast.LENGTH_LONG
+                        ).show()
+
+                        return@DatePickerDialog
+                    }
 
                     selectedDate =
                         "$selectedDay/${selectedMonth + 1}/$selectedYear"
@@ -114,7 +152,6 @@ class DoctorDetailsActivity : AppCompatActivity() {
             datePickerDialog.show()
         }
 
-        // BOOK APPOINTMENT
         bookAppointmentBtn.setOnClickListener {
 
             if (
@@ -174,26 +211,7 @@ class DoctorDetailsActivity : AppCompatActivity() {
 
         slotsContainer.removeAllViews()
 
-        val slotTimes = listOf(
-            "08:00 AM",
-            "08:30 AM",
-            "09:00 AM",
-            "09:30 AM",
-            "10:00 AM",
-            "10:30 AM",
-            "11:00 AM",
-            "11:30 AM",
-            "12:00 PM",
-            "12:30 PM",
-            "01:00 PM",
-            "01:30 PM",
-            "02:00 PM",
-            "02:30 PM",
-            "03:00 PM",
-            "03:30 PM"
-        )
-
-        for (slot in slotTimes) {
+        for (slot in doctorSlots) {
 
             val slotButton = Button(this)
 

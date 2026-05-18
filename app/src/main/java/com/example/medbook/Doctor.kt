@@ -6,5 +6,9 @@ data class Doctor(
     val specialization: String,
     val rating: String,
     val experience: String,
-    val imageResId: Int
+    val imageResId: Int,
+
+    val slots: List<String>,
+
+    val unavailableDays: List<Int>
 )
