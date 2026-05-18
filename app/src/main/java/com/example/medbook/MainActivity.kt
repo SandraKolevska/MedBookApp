@@ -16,28 +16,96 @@ class MainActivity : AppCompatActivity() {
             "Dr. Sarah Johnson",
             "Cardiologist",
             "⭐ 4.9",
-            "10 years experience"
+            "10 years experience",
+            R.drawable.doctor2
         ),
 
         Doctor(
             "Dr. Michael Smith",
             "Dentist",
             "⭐ 4.8",
-            "7 years experience"
+            "7 years experience",
+            R.drawable.doctor3
         ),
 
         Doctor(
             "Dr. Emily Brown",
             "Pediatrician",
             "⭐ 4.7",
-            "5 years experience"
+            "5 years experience",
+            R.drawable.doctor4
         ),
 
         Doctor(
             "Dr. David Wilson",
             "Neurologist",
             "⭐ 4.9",
-            "12 years experience"
+            "12 years experience",
+            R.drawable.doctor5
+        ),
+
+        Doctor(
+            "Dr. Olivia Taylor",
+            "Dermatologist",
+            "⭐ 4.8",
+            "8 years experience",
+            R.drawable.doctor6
+        ),
+
+        Doctor(
+            "Dr. James Anderson",
+            "Orthopedic",
+            "⭐ 4.7",
+            "9 years experience",
+            R.drawable.doctor7
+        ),
+
+        Doctor(
+            "Dr. Sophia Martinez",
+            "Gynecologist",
+            "⭐ 4.9",
+            "11 years experience",
+            R.drawable.doctor8
+        ),
+
+        Doctor(
+            "Dr. Daniel Thomas",
+            "Psychiatrist",
+            "⭐ 4.6",
+            "6 years experience",
+            R.drawable.doctor9
+        ),
+
+        Doctor(
+            "Dr. Isabella White",
+            "Ophthalmologist",
+            "⭐ 4.8",
+            "10 years experience",
+            R.drawable.doctor10
+        ),
+
+        Doctor(
+            "Dr. William Harris",
+            "ENT Specialist",
+            "⭐ 4.7",
+            "7 years experience",
+            R.drawable.doctor11
+        ),
+
+        Doctor(
+            "Dr. Mia Clark",
+            "Radiologist",
+            "⭐ 4.9",
+            "13 years experience",
+            R.drawable.doctor12
+        ),
+
+        Doctor(
+            "Dr. Benjamin Lewis",
+            "General Surgeon",
+            "⭐ 5.0",
+            "15 years experience",
+            R.drawable.doctor14
         )
     )
 

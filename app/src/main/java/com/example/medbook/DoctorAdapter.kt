@@ -3,6 +3,7 @@ package com.example.medbook
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
@@ -10,8 +11,11 @@ class DoctorAdapter(
     private val doctorList: List<Doctor>
 ) : RecyclerView.Adapter<DoctorAdapter.DoctorViewHolder>() {
 
-    class DoctorViewHolder(itemView: View) :
-        RecyclerView.ViewHolder(itemView) {
+    class DoctorViewHolder(itemView: View)
+        : RecyclerView.ViewHolder(itemView) {
+
+        val doctorImage: ImageView =
+            itemView.findViewById(R.id.doctorImage)
 
         val doctorName: TextView =
             itemView.findViewById(R.id.doctorName)
@@ -44,10 +48,21 @@ class DoctorAdapter(
 
         val doctor = doctorList[position]
 
-        holder.doctorName.text = doctor.name
-        holder.doctorSpecialization.text = doctor.specialization
-        holder.doctorRating.text = doctor.rating
-        holder.doctorExperience.text = doctor.experience
+        holder.doctorImage.setImageResource(
+            doctor.imageResId
+        )
+
+        holder.doctorName.text =
+            doctor.name
+
+        holder.doctorSpecialization.text =
+            doctor.specialization
+
+        holder.doctorRating.text =
+            doctor.rating
+
+        holder.doctorExperience.text =
+            doctor.experience
     }
 
     override fun getItemCount(): Int {
