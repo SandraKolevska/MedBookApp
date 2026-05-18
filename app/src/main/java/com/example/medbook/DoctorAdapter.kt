@@ -1,5 +1,6 @@
 package com.example.medbook
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -63,6 +64,42 @@ class DoctorAdapter(
 
         holder.doctorExperience.text =
             doctor.experience
+
+        // CLICK EVENT
+        holder.itemView.setOnClickListener {
+
+            val context = holder.itemView.context
+
+            val intent =
+                Intent(context, DoctorDetailsActivity::class.java)
+
+            intent.putExtra(
+                "doctorName",
+                doctor.name
+            )
+
+            intent.putExtra(
+                "doctorSpecialization",
+                doctor.specialization
+            )
+
+            intent.putExtra(
+                "doctorRating",
+                doctor.rating
+            )
+
+            intent.putExtra(
+                "doctorExperience",
+                doctor.experience
+            )
+
+            intent.putExtra(
+                "doctorImage",
+                doctor.imageResId
+            )
+
+            context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int {

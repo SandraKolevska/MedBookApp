@@ -9,9 +9,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MedBook">
         <activity
-            android:name=".RegisterActivity"
+            android:name=".DoctorDetailsActivity"
             android:exported="false" />
-        <!-- LOGIN SCREEN -->
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="false" /> <!-- LOGIN SCREEN -->
         <activity
             android:name=".LoginActivity"
             android:exported="true">
