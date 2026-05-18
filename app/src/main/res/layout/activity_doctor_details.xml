@@ -2,20 +2,21 @@
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#F5F5F5">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:padding="20dp">
 
         <ImageView
             android:id="@+id/detailsDoctorImage"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="260dp"
             android:scaleType="centerCrop"
+            android:background="#DDDDDD"
             android:src="@drawable/doctor2" />
 
         <TextView
@@ -23,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Doctor Name"
-            android:textSize="28sp"
+            android:textSize="30sp"
             android:textStyle="bold"
             android:layout_marginTop="20dp" />
 
@@ -33,7 +34,8 @@
             android:layout_height="wrap_content"
             android:text="Specialization"
             android:textSize="20sp"
-            android:layout_marginTop="10dp" />
+            android:textColor="#666666"
+            android:layout_marginTop="6dp" />
 
         <TextView
             android:id="@+id/detailsDoctorRating"
@@ -43,19 +45,125 @@
             android:textSize="18sp"
             android:layout_marginTop="10dp" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:background="#FFFFFF">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Experience"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/detailsDoctorExperience"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10 years"
+                    android:textSize="18sp"
+                    android:layout_marginTop="6dp" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="12dp"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:background="#FFFFFF">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Consultation Fee"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/detailsDoctorFee"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$20"
+                    android:textSize="18sp"
+                    android:layout_marginTop="6dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- AVAILABLE DATES -->
+
         <TextView
-            android:id="@+id/detailsDoctorExperience"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="10 years experience"
-            android:textSize="18sp"
-            android:layout_marginTop="10dp" />
+            android:text="Available Dates"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginTop="30dp" />
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="16dp">
+
+                <Button
+                    android:id="@+id/date1Btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="May 18" />
+
+                <Button
+                    android:id="@+id/date2Btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="May 19"
+                    android:layout_marginStart="10dp" />
+
+                <Button
+                    android:id="@+id/date3Btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="May 20"
+                    android:layout_marginStart="10dp" />
+
+                <Button
+                    android:id="@+id/date4Btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="May 21"
+                    android:layout_marginStart="10dp" />
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+        <!-- AVAILABLE TIME SLOTS -->
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Available Time Slots"
-            android:textSize="22sp"
+            android:textSize="24sp"
             android:textStyle="bold"
             android:layout_marginTop="30dp" />
 
@@ -66,20 +174,30 @@
             android:layout_marginTop="16dp">
 
             <Button
+                android:id="@+id/slot1Btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="09:00 AM" />
 
             <Button
+                android:id="@+id/slot2Btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="10:00 AM"
                 android:layout_marginTop="10dp" />
 
             <Button
+                android:id="@+id/slot3Btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="11:00 AM"
+                android:layout_marginTop="10dp" />
+
+            <Button
+                android:id="@+id/slot4Btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="12:00 PM"
                 android:layout_marginTop="10dp" />
 
         </LinearLayout>
@@ -89,7 +207,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Book Appointment"
-            android:layout_marginTop="30dp" />
+            android:layout_marginTop="30dp"
+            android:padding="16dp" />
 
     </LinearLayout>
 
