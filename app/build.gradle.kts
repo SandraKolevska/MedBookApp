@@ -50,6 +50,7 @@ dependencies {
     // Firebase BOM
     implementation(platform("com.google.firebase:firebase-bom:33.5.1"))
     implementation("androidx.recyclerview:recyclerview:1.3.2")
+    implementation("com.google.firebase:firebase-firestore-ktx")
 
     // Firebase Services
     implementation("com.google.firebase:firebase-auth")

@@ -7,16 +7,21 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.firestore.FirebaseFirestore
 
 class DoctorDetailsActivity : AppCompatActivity() {
 
     private var selectedSlot = ""
     private var selectedDate = ""
 
+    private lateinit var firestore: FirebaseFirestore
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_doctor_details)
+
+        firestore = FirebaseFirestore.getInstance()
 
         val doctorImage =
             findViewById<ImageView>(R.id.detailsDoctorImage)
@@ -227,11 +232,33 @@ class DoctorDetailsActivity : AppCompatActivity() {
                 selectedSlot.isNotEmpty()
             ) {
 
-                Toast.makeText(
-                    this,
-                    "Appointment booked on $selectedDate at $selectedSlot",
-                    Toast.LENGTH_LONG
-                ).show()
+                val appointment = hashMapOf(
+
+                    "doctorName" to name,
+                    "specialization" to specialization,
+                    "date" to selectedDate,
+                    "slot" to selectedSlot
+                )
+
+                firestore.collection("appointments")
+                    .add(appointment)
+                    .addOnSuccessListener {
+
+                        Toast.makeText(
+                            this,
+                            "Appointment saved successfully",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+
+                    .addOnFailureListener {
+
+                        Toast.makeText(
+                            this,
+                            "Failed to save appointment",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
 
             } else {
 
