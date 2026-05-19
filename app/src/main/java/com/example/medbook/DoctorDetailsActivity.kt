@@ -191,11 +191,20 @@ class DoctorDetailsActivity : AppCompatActivity() {
 
                     .addOnSuccessListener {
 
-                        Toast.makeText(
-                            this,
-                            "Appointment saved successfully",
-                            Toast.LENGTH_LONG
-                        ).show()
+                        androidx.appcompat.app.AlertDialog.Builder(this)
+                            .setTitle("Appointment Confirmed")
+
+                            .setMessage(
+                                "Doctor: $name\n\n" +
+                                        "Date: $selectedDate\n\n" +
+                                        "Time: $selectedSlot"
+                            )
+
+                            .setPositiveButton("OK") { dialog, _ ->
+                                dialog.dismiss()
+                            }
+
+                            .show()
 
                         loadSlots(
                             slotsContainer,

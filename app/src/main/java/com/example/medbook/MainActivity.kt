@@ -16,7 +16,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var doctorAdapter: DoctorAdapter
-    private lateinit var myAppointmentsBtn: Button
     private lateinit var profileBtn: Button
     private lateinit var searchDoctorsInput: EditText
 
@@ -391,29 +390,8 @@ class MainActivity : AppCompatActivity() {
         surgeonBtn =
             findViewById(R.id.surgeonBtn)
 
-        myAppointmentsBtn =
-            findViewById(R.id.myAppointmentsBtn)
-
         profileBtn =
             findViewById(R.id.profileBtn)
-
-        myAppointmentsBtn.setOnClickListener {
-
-            if (auth.currentUser == null) {
-
-                android.widget.Toast.makeText(
-                    this,
-                    "Please login first",
-                    android.widget.Toast.LENGTH_LONG
-                ).show()
-
-            } else {
-
-                startActivity(
-                    Intent(this, MyAppointmentsActivity::class.java)
-                )
-            }
-        }
 
         profileBtn.setOnClickListener {
 
