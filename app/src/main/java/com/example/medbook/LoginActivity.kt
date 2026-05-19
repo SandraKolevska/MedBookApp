@@ -14,26 +14,45 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_login)
 
         auth = FirebaseAuth.getInstance()
 
-        val emailInput = findViewById<EditText>(R.id.emailInput)
-        val passwordInput = findViewById<EditText>(R.id.passwordInput)
+        val emailInput =
+            findViewById<EditText>(R.id.emailInput)
 
-        val loginBtn = findViewById<Button>(R.id.loginBtn)
-        val guestBtn = findViewById<Button>(R.id.guestBtn)
-        val goToRegisterBtn = findViewById<Button>(R.id.goToRegisterBtn)
+        val passwordInput =
+            findViewById<EditText>(R.id.passwordInput)
+
+        val loginBtn =
+            findViewById<Button>(R.id.loginBtn)
+
+        val guestBtn =
+            findViewById<Button>(R.id.guestBtn)
+
+        val goToRegisterBtn =
+            findViewById<Button>(R.id.goToRegisterBtn)
 
         // EMAIL LOGIN
         loginBtn.setOnClickListener {
 
-            val email = emailInput.text.toString().trim()
-            val password = passwordInput.text.toString().trim()
+            val email =
+                emailInput.text.toString().trim()
 
-            if (email.isNotEmpty() && password.isNotEmpty()) {
+            val password =
+                passwordInput.text.toString().trim()
 
-                auth.signInWithEmailAndPassword(email, password)
+            if (
+                email.isNotEmpty() &&
+                password.isNotEmpty()
+            ) {
+
+                auth.signInWithEmailAndPassword(
+                    email,
+                    password
+                )
+
                     .addOnCompleteListener(this) { task ->
 
                         if (task.isSuccessful) {
@@ -45,7 +64,10 @@ class LoginActivity : AppCompatActivity() {
                             ).show()
 
                             startActivity(
-                                Intent(this, MainActivity::class.java)
+                                Intent(
+                                    this,
+                                    MainActivity::class.java
+                                )
                             )
 
                             finish()
@@ -70,35 +92,22 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
-        // GUEST LOGIN
+        // GUEST MODE
         guestBtn.setOnClickListener {
 
-            auth.signInAnonymously()
-                .addOnCompleteListener(this) { task ->
+            auth.signOut()
 
-                    if (task.isSuccessful) {
+            Toast.makeText(
+                this,
+                "Guest Mode",
+                Toast.LENGTH_SHORT
+            ).show()
 
-                        Toast.makeText(
-                            this,
-                            "Guest Login Successful",
-                            Toast.LENGTH_SHORT
-                        ).show()
+            startActivity(
+                Intent(this, MainActivity::class.java)
+            )
 
-                        startActivity(
-                            Intent(this, MainActivity::class.java)
-                        )
-
-                        finish()
-
-                    } else {
-
-                        Toast.makeText(
-                            this,
-                            "Guest Login Failed",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                }
+            finish()
         }
 
         // OPEN REGISTER SCREEN

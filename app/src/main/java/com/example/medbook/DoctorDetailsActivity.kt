@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.Calendar
 import java.util.GregorianCalendar
@@ -19,6 +20,8 @@ class DoctorDetailsActivity : AppCompatActivity() {
     private var selectedDate = ""
 
     private lateinit var firestore: FirebaseFirestore
+
+    private lateinit var auth: FirebaseAuth
 
     private lateinit var doctorSlots: ArrayList<String>
 
@@ -32,6 +35,8 @@ class DoctorDetailsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_doctor_details)
 
         firestore = FirebaseFirestore.getInstance()
+
+        auth = FirebaseAuth.getInstance()
 
         val doctorImage =
             findViewById<ImageView>(R.id.detailsDoctorImage)
@@ -152,7 +157,20 @@ class DoctorDetailsActivity : AppCompatActivity() {
             datePickerDialog.show()
         }
 
+        // BOOK APPOINTMENT
         bookAppointmentBtn.setOnClickListener {
+
+            // BLOCK GUEST USERS
+            if (auth.currentUser == null) {
+
+                Toast.makeText(
+                    this,
+                    "Please login to book appointments",
+                    Toast.LENGTH_LONG
+                ).show()
+
+                return@setOnClickListener
+            }
 
             if (
                 selectedDate.isNotEmpty() &&
@@ -164,7 +182,8 @@ class DoctorDetailsActivity : AppCompatActivity() {
                     "doctorName" to name,
                     "specialization" to specialization,
                     "date" to selectedDate,
-                    "slot" to selectedSlot
+                    "slot" to selectedSlot,
+                    "userId" to auth.currentUser!!.uid
                 )
 
                 firestore.collection("appointments")

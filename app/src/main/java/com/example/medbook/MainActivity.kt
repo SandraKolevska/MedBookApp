@@ -9,6 +9,7 @@ import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
 import java.util.Calendar
 
 class MainActivity : AppCompatActivity() {
@@ -16,7 +17,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var doctorAdapter: DoctorAdapter
     private lateinit var myAppointmentsBtn: Button
+    private lateinit var profileBtn: Button
     private lateinit var searchDoctorsInput: EditText
+
+    private lateinit var auth: FirebaseAuth
 
     private lateinit var allDoctorsBtn: Button
     private lateinit var cardiologistBtn: Button
@@ -343,6 +347,8 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main)
 
+        auth = FirebaseAuth.getInstance()
+
         searchDoctorsInput =
             findViewById(R.id.searchDoctorsInput)
 
@@ -388,11 +394,43 @@ class MainActivity : AppCompatActivity() {
         myAppointmentsBtn =
             findViewById(R.id.myAppointmentsBtn)
 
+        profileBtn =
+            findViewById(R.id.profileBtn)
+
         myAppointmentsBtn.setOnClickListener {
 
-            startActivity(
-                Intent(this, MyAppointmentsActivity::class.java)
-            )
+            if (auth.currentUser == null) {
+
+                android.widget.Toast.makeText(
+                    this,
+                    "Please login first",
+                    android.widget.Toast.LENGTH_LONG
+                ).show()
+
+            } else {
+
+                startActivity(
+                    Intent(this, MyAppointmentsActivity::class.java)
+                )
+            }
+        }
+
+        profileBtn.setOnClickListener {
+
+            if (auth.currentUser == null) {
+
+                android.widget.Toast.makeText(
+                    this,
+                    "Please login first",
+                    android.widget.Toast.LENGTH_LONG
+                ).show()
+
+            } else {
+
+                startActivity(
+                    Intent(this, ProfileActivity::class.java)
+                )
+            }
         }
 
         recyclerView =
