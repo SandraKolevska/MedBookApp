@@ -45,6 +45,13 @@
             android:textSize="18sp"
             android:layout_marginTop="10dp" />
 
+        <Button
+            android:id="@+id/favoriteBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="♡ Add to Favorites"
+            android:layout_marginTop="16dp" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -154,6 +161,47 @@
             android:text="Book Appointment"
             android:layout_marginTop="30dp"
             android:padding="16dp" />
+
+        <!-- REVIEWS SECTION -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reviews"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="16dp" />
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:stepSize="1" />
+
+        <EditText
+            android:id="@+id/reviewInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Write review..."
+            android:layout_marginTop="12dp"
+            android:background="#FFFFFF"
+            android:padding="12dp" />
+
+        <Button
+            android:id="@+id/submitReviewBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Submit Review"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="16dp" />
+
+        <LinearLayout
+            android:id="@+id/reviewsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
 
     </LinearLayout>
 

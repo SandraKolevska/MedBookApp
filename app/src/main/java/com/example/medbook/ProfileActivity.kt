@@ -50,6 +50,9 @@ class ProfileActivity : AppCompatActivity() {
         val appointmentsContainer =
             findViewById<LinearLayout>(R.id.appointmentsContainer)
 
+        val favoriteDoctorsContainer =
+            findViewById<LinearLayout>(R.id.favoriteDoctorsContainer)
+
         val logoutBtn =
             findViewById<Button>(R.id.logoutBtn)
 
@@ -59,6 +62,7 @@ class ProfileActivity : AppCompatActivity() {
         userEmailText.text =
             currentUser?.email
 
+        // LOAD APPOINTMENTS
         firestore.collection("appointments")
             .whereEqualTo(
                 "userId",
@@ -205,6 +209,79 @@ class ProfileActivity : AppCompatActivity() {
 
                     appointmentsContainer.addView(
                         cardLayout
+                    )
+                }
+            }
+
+        // LOAD FAVORITES
+        firestore.collection("favorites")
+            .whereEqualTo(
+                "userId",
+                currentUser?.uid
+            )
+            .get()
+
+            .addOnSuccessListener { documents ->
+
+                favoriteDoctorsContainer.removeAllViews()
+
+                for (document in documents) {
+
+                    val doctorName =
+                        document.getString("doctorName")
+
+                    val favoriteCard =
+                        LinearLayout(this)
+
+                    favoriteCard.orientation =
+                        LinearLayout.VERTICAL
+
+                    favoriteCard.setPadding(
+                        40,
+                        40,
+                        40,
+                        40
+                    )
+
+                    favoriteCard.setBackgroundColor(
+                        Color.WHITE
+                    )
+
+                    val params =
+                        LinearLayout.LayoutParams(
+                            LinearLayout.LayoutParams.MATCH_PARENT,
+                            LinearLayout.LayoutParams.WRAP_CONTENT
+                        )
+
+                    params.setMargins(
+                        0,
+                        0,
+                        0,
+                        24
+                    )
+
+                    favoriteCard.layoutParams =
+                        params
+
+                    val favoriteDoctorText =
+                        TextView(this)
+
+                    favoriteDoctorText.text =
+                        "❤️ $doctorName"
+
+                    favoriteDoctorText.textSize = 20f
+
+                    favoriteDoctorText.setTypeface(
+                        null,
+                        android.graphics.Typeface.BOLD
+                    )
+
+                    favoriteCard.addView(
+                        favoriteDoctorText
+                    )
+
+                    favoriteDoctorsContainer.addView(
+                        favoriteCard
                     )
                 }
             }

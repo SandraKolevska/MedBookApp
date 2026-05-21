@@ -4,13 +4,18 @@ import android.app.DatePickerDialog
 import android.graphics.Color
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
 import android.widget.GridLayout
 import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.RatingBar
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.QuerySnapshot
 import java.util.Calendar
 import java.util.GregorianCalendar
 
@@ -68,6 +73,21 @@ class DoctorDetailsActivity : AppCompatActivity() {
         val bookAppointmentBtn =
             findViewById<Button>(R.id.bookAppointmentBtn)
 
+        val ratingBar =
+            findViewById<RatingBar>(R.id.ratingBar)
+
+        val reviewInput =
+            findViewById<EditText>(R.id.reviewInput)
+
+        val submitReviewBtn =
+            findViewById<Button>(R.id.submitReviewBtn)
+
+        val reviewsContainer =
+            findViewById<LinearLayout>(R.id.reviewsContainer)
+
+        val favoriteBtn =
+            findViewById<Button>(R.id.favoriteBtn)
+
         val name =
             intent.getStringExtra("doctorName")
 
@@ -100,6 +120,87 @@ class DoctorDetailsActivity : AppCompatActivity() {
         doctorFee.text = "$25"
 
         doctorImage.setImageResource(image)
+
+        checkFavoriteStatus(
+            name,
+            favoriteBtn
+        )
+
+        loadReviews(
+            name,
+            reviewsContainer
+        )
+
+        favoriteBtn.setOnClickListener {
+
+            if (auth.currentUser == null) {
+
+                Toast.makeText(
+                    this,
+                    "Please login first",
+                    Toast.LENGTH_SHORT
+                ).show()
+
+                return@setOnClickListener
+            }
+
+            firestore.collection("favorites")
+                .whereEqualTo(
+                    "doctorName",
+                    name
+                )
+                .whereEqualTo(
+                    "userId",
+                    auth.currentUser?.uid
+                )
+                .get()
+
+                .addOnSuccessListener { documents ->
+
+                    if (documents.isEmpty) {
+
+                        val favorite = hashMapOf(
+
+                            "doctorName" to name,
+
+                            "userId" to auth.currentUser?.uid
+                        )
+
+                        firestore.collection("favorites")
+                            .add(favorite)
+
+                            .addOnSuccessListener {
+
+                                favoriteBtn.text =
+                                    "❤️ Remove Favorite"
+
+                                Toast.makeText(
+                                    this,
+                                    "Added to favorites",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+
+                    } else {
+
+                        for (document in documents) {
+
+                            firestore.collection("favorites")
+                                .document(document.id)
+                                .delete()
+                        }
+
+                        favoriteBtn.text =
+                            "♡ Add to Favorites"
+
+                        Toast.makeText(
+                            this,
+                            "Removed from favorites",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+        }
 
         selectDateBtn.setOnClickListener {
 
@@ -160,7 +261,6 @@ class DoctorDetailsActivity : AppCompatActivity() {
         // BOOK APPOINTMENT
         bookAppointmentBtn.setOnClickListener {
 
-            // BLOCK GUEST USERS
             if (auth.currentUser == null) {
 
                 Toast.makeText(
@@ -191,7 +291,7 @@ class DoctorDetailsActivity : AppCompatActivity() {
 
                     .addOnSuccessListener {
 
-                        androidx.appcompat.app.AlertDialog.Builder(this)
+                        AlertDialog.Builder(this)
                             .setTitle("Appointment Confirmed")
 
                             .setMessage(
@@ -230,6 +330,248 @@ class DoctorDetailsActivity : AppCompatActivity() {
                 ).show()
             }
         }
+
+        // SUBMIT REVIEW
+        submitReviewBtn.setOnClickListener {
+
+            if (auth.currentUser == null) {
+
+                Toast.makeText(
+                    this,
+                    "Please login to leave reviews",
+                    Toast.LENGTH_LONG
+                ).show()
+
+                return@setOnClickListener
+            }
+
+            val reviewText =
+                reviewInput.text.toString().trim()
+
+            val stars =
+                ratingBar.rating.toInt()
+
+            if (
+                reviewText.isEmpty() ||
+                stars == 0
+            ) {
+
+                Toast.makeText(
+                    this,
+                    "Add rating and review",
+                    Toast.LENGTH_SHORT
+                ).show()
+
+                return@setOnClickListener
+            }
+
+            firestore.collection("reviews")
+                .whereEqualTo(
+                    "doctorName",
+                    name
+                )
+                .whereEqualTo(
+                    "userEmail",
+                    auth.currentUser?.email
+                )
+                .get()
+
+                .addOnSuccessListener { documents ->
+
+                    if (!documents.isEmpty) {
+
+                        Toast.makeText(
+                            this,
+                            "You already reviewed this doctor",
+                            Toast.LENGTH_LONG
+                        ).show()
+
+                    } else {
+
+                        val review = Review(
+
+                            auth.currentUser?.email ?: "",
+
+                            name ?: "",
+
+                            stars,
+
+                            reviewText
+                        )
+
+                        firestore.collection("reviews")
+                            .add(review)
+
+                            .addOnSuccessListener {
+
+                                Toast.makeText(
+                                    this,
+                                    "Review submitted",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+
+                                reviewInput.text.clear()
+
+                                ratingBar.rating = 0f
+
+                                loadReviews(
+                                    name,
+                                    reviewsContainer
+                                )
+                            }
+                    }
+                }
+        }
+    }
+
+    private fun checkFavoriteStatus(
+        doctorName: String?,
+        favoriteBtn: Button
+    ) {
+
+        if (auth.currentUser == null) {
+            return
+        }
+
+        firestore.collection("favorites")
+            .whereEqualTo(
+                "doctorName",
+                doctorName
+            )
+            .whereEqualTo(
+                "userId",
+                auth.currentUser?.uid
+            )
+            .get()
+
+            .addOnSuccessListener { documents: QuerySnapshot ->
+
+                if (documents.isEmpty) {
+
+                    favoriteBtn.text =
+                        "♡ Add to Favorites"
+
+                } else {
+
+                    favoriteBtn.text =
+                        "❤️ Remove Favorite"
+                }
+            }
+    }
+
+    private fun loadReviews(
+        doctorName: String?,
+        reviewsContainer: LinearLayout
+    ) {
+
+        reviewsContainer.removeAllViews()
+
+        firestore.collection("reviews")
+            .whereEqualTo(
+                "doctorName",
+                doctorName
+            )
+            .get()
+
+            .addOnSuccessListener { documents ->
+
+                for (document in documents) {
+
+                    val userEmail =
+                        document.getString("userEmail")
+
+                    val rating =
+                        document.getLong("rating")
+
+                    val reviewText =
+                        document.getString("reviewText")
+
+                    val reviewCard =
+                        LinearLayout(this)
+
+                    reviewCard.orientation =
+                        LinearLayout.VERTICAL
+
+                    reviewCard.setPadding(
+                        32,
+                        32,
+                        32,
+                        32
+                    )
+
+                    reviewCard.setBackgroundColor(
+                        Color.WHITE
+                    )
+
+                    val params =
+                        LinearLayout.LayoutParams(
+                            LinearLayout.LayoutParams.MATCH_PARENT,
+                            LinearLayout.LayoutParams.WRAP_CONTENT
+                        )
+
+                    params.setMargins(
+                        0,
+                        0,
+                        0,
+                        24
+                    )
+
+                    reviewCard.layoutParams =
+                        params
+
+                    val emailText =
+                        TextView(this)
+
+                    emailText.text =
+                        userEmail
+
+                    emailText.textSize = 18f
+
+                    emailText.setTypeface(
+                        null,
+                        android.graphics.Typeface.BOLD
+                    )
+
+                    val starsText =
+                        TextView(this)
+
+                    starsText.text =
+                        "⭐".repeat(rating?.toInt() ?: 0)
+
+                    starsText.textSize = 18f
+
+                    starsText.setPadding(
+                        0,
+                        8,
+                        0,
+                        8
+                    )
+
+                    val reviewTextView =
+                        TextView(this)
+
+                    reviewTextView.text =
+                        reviewText
+
+                    reviewTextView.textSize = 16f
+
+                    reviewCard.addView(
+                        emailText
+                    )
+
+                    reviewCard.addView(
+                        starsText
+                    )
+
+                    reviewCard.addView(
+                        reviewTextView
+                    )
+
+                    reviewsContainer.addView(
+                        reviewCard
+                    )
+                }
+            }
     }
 
     private fun loadSlots(
