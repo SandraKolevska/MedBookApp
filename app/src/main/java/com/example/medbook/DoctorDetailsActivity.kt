@@ -1,6 +1,7 @@
 package com.example.medbook
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.widget.Button
@@ -305,6 +306,16 @@ class DoctorDetailsActivity : AppCompatActivity() {
                             }
 
                             .show()
+
+                        val notification = Notification(
+
+                            auth.currentUser!!.uid,
+
+                            "🔔 Appointment booked with $name"
+                        )
+
+                        firestore.collection("notifications")
+                            .add(notification)
 
                         loadSlots(
                             slotsContainer,

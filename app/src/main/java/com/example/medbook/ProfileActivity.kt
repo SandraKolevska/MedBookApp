@@ -53,6 +53,9 @@ class ProfileActivity : AppCompatActivity() {
         val favoriteDoctorsContainer =
             findViewById<LinearLayout>(R.id.favoriteDoctorsContainer)
 
+        val notificationsContainer =
+            findViewById<LinearLayout>(R.id.notificationsContainer)
+
         val logoutBtn =
             findViewById<Button>(R.id.logoutBtn)
 
@@ -285,7 +288,73 @@ class ProfileActivity : AppCompatActivity() {
                     )
                 }
             }
+// LOAD NOTIFICATIONS
+        firestore.collection("notifications")
+            .whereEqualTo(
+                "userId",
+                currentUser?.uid
+            )
+            .get()
 
+            .addOnSuccessListener { documents ->
+
+                notificationsContainer.removeAllViews()
+
+                for (document in documents) {
+
+                    val message =
+                        document.getString("message")
+
+                    val notificationCard =
+                        LinearLayout(this)
+
+                    notificationCard.orientation =
+                        LinearLayout.VERTICAL
+
+                    notificationCard.setPadding(
+                        32,
+                        32,
+                        32,
+                        32
+                    )
+
+                    notificationCard.setBackgroundColor(
+                        Color.WHITE
+                    )
+
+                    val params =
+                        LinearLayout.LayoutParams(
+                            LinearLayout.LayoutParams.MATCH_PARENT,
+                            LinearLayout.LayoutParams.WRAP_CONTENT
+                        )
+
+                    params.setMargins(
+                        0,
+                        0,
+                        0,
+                        24
+                    )
+
+                    notificationCard.layoutParams =
+                        params
+
+                    val messageText =
+                        TextView(this)
+
+                    messageText.text =
+                        message
+
+                    messageText.textSize = 18f
+
+                    notificationCard.addView(
+                        messageText
+                    )
+
+                    notificationsContainer.addView(
+                        notificationCard
+                    )
+                }
+            }
         logoutBtn.setOnClickListener {
 
             auth.signOut()
