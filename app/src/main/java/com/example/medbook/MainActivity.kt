@@ -50,6 +50,10 @@ class MainActivity : AppCompatActivity() {
             "10 years experience",
             R.drawable.doctor2,
 
+            "$50",
+
+            "Experienced cardiologist specialized in heart disease prevention, ECG diagnostics and patient care.",
+
             listOf(
                 "08:00 AM",
                 "08:30 AM",
@@ -80,6 +84,10 @@ class MainActivity : AppCompatActivity() {
             "⭐ 4.8",
             "7 years experience",
             R.drawable.doctor3,
+
+            "$35",
+
+            "Professional dentist with extensive experience in cosmetic dentistry and oral health treatments.",
 
             listOf(
                 "10:00 AM",
@@ -113,6 +121,10 @@ class MainActivity : AppCompatActivity() {
             "5 years experience",
             R.drawable.doctor4,
 
+            "$30",
+
+            "Friendly pediatrician dedicated to children's health, preventive care and family consultations.",
+
             listOf(
                 "09:00 AM",
                 "09:30 AM",
@@ -138,6 +150,10 @@ class MainActivity : AppCompatActivity() {
             "⭐ 4.9",
             "12 years experience",
             R.drawable.doctor5,
+
+            "$70",
+
+            "Highly experienced neurologist focused on brain disorders, migraines and neurological diagnostics.",
 
             listOf(
                 "11:00 AM",
@@ -166,6 +182,10 @@ class MainActivity : AppCompatActivity() {
             "8 years experience",
             R.drawable.doctor6,
 
+            "$40",
+
+            "Dermatology specialist experienced in skin care treatments, acne therapy and cosmetic procedures.",
+
             listOf(
                 "08:00 AM",
                 "08:30 AM",
@@ -188,6 +208,10 @@ class MainActivity : AppCompatActivity() {
             "⭐ 4.7",
             "9 years experience",
             R.drawable.doctor7,
+
+            "$55",
+
+            "Orthopedic specialist helping patients recover from injuries, fractures and joint problems.",
 
             listOf(
                 "01:00 PM",
@@ -213,11 +237,15 @@ class MainActivity : AppCompatActivity() {
             "11 years experience",
             R.drawable.doctor8,
 
+            "$45",
+
+            "Experienced gynecologist focused on women's health, pregnancy care and preventive examinations.",
+
             listOf(
                 "09:00 AM",
                 "09:30 AM",
                 "10:00 AM",
-                "10:30 AM",
+                "10:30 PM",
                 "11:00 AM",
                 "11:30 AM",
                 "12:00 PM",
@@ -235,6 +263,10 @@ class MainActivity : AppCompatActivity() {
             "⭐ 4.6",
             "6 years experience",
             R.drawable.doctor9,
+
+            "$60",
+
+            "Compassionate psychiatrist helping patients with anxiety, stress management and mental wellness.",
 
             listOf(
                 "02:00 PM",
@@ -258,6 +290,10 @@ class MainActivity : AppCompatActivity() {
             "10 years experience",
             R.drawable.doctor10,
 
+            "$45",
+
+            "Eye specialist providing vision care, diagnostics and treatment for various eye conditions.",
+
             listOf(
                 "08:00 AM",
                 "08:30 AM",
@@ -279,6 +315,10 @@ class MainActivity : AppCompatActivity() {
             "⭐ 4.7",
             "7 years experience",
             R.drawable.doctor11,
+
+            "$40",
+
+            "ENT specialist treating ear, nose and throat conditions with modern medical approaches.",
 
             listOf(
                 "12:00 PM",
@@ -302,6 +342,10 @@ class MainActivity : AppCompatActivity() {
             "13 years experience",
             R.drawable.doctor12,
 
+            "$65",
+
+            "Expert radiologist specialized in MRI, CT scan diagnostics and medical imaging interpretation.",
+
             listOf(
                 "10:00 AM",
                 "10:30 AM",
@@ -323,6 +367,10 @@ class MainActivity : AppCompatActivity() {
             "⭐ 5.0",
             "15 years experience",
             R.drawable.doctor14,
+
+            "$80",
+
+            "Highly skilled surgeon with extensive experience in complex surgeries and patient recovery care.",
 
             listOf(
                 "07:00 AM",

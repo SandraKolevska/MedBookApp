@@ -62,6 +62,9 @@ class DoctorDetailsActivity : AppCompatActivity() {
         val doctorFee =
             findViewById<TextView>(R.id.detailsDoctorFee)
 
+        val doctorDescription =
+            findViewById<TextView>(R.id.detailsDoctorDescription)
+
         val selectDateBtn =
             findViewById<Button>(R.id.selectDateBtn)
 
@@ -104,6 +107,12 @@ class DoctorDetailsActivity : AppCompatActivity() {
         val image =
             intent.getIntExtra("doctorImage", 0)
 
+        val fee =
+            intent.getStringExtra("doctorPrice")
+
+        val description =
+            intent.getStringExtra("doctorDescription")
+
         doctorSlots =
             intent.getStringArrayListExtra("doctorSlots")
                 ?: arrayListOf()
@@ -118,7 +127,10 @@ class DoctorDetailsActivity : AppCompatActivity() {
         doctorRating.text = rating
         doctorExperience.text = experience
 
-        doctorFee.text = "$25"
+        doctorFee.text = fee
+
+        doctorDescription.text =
+            description
 
         doctorImage.setImageResource(image)
 

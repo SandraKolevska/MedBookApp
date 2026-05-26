@@ -6,7 +6,8 @@
     android:orientation="horizontal"
     android:padding="16dp"
     android:layout_margin="10dp"
-    android:background="#F2F2F2">
+    android:background="#FFFFFF"
+    android:elevation="4dp">
 
     <ImageView
         android:id="@+id/doctorImage"
@@ -16,8 +17,9 @@
         android:src="@drawable/doctor2" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:orientation="vertical"
         android:layout_marginStart="16dp">
 
@@ -35,6 +37,7 @@
             android:layout_height="wrap_content"
             android:text="Specialization"
             android:textSize="16sp"
+            android:textColor="#666666"
             android:layout_marginTop="6dp" />
 
         <TextView
@@ -42,14 +45,33 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="⭐ 4.9"
+            android:textSize="15sp"
             android:layout_marginTop="6dp" />
 
-        <TextView
-            android:id="@+id/doctorExperience"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="10 years experience"
-            android:layout_marginTop="6dp" />
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:id="@+id/doctorExperience"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="10 years experience"
+                android:textColor="#6200EE"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/doctorPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$50"
+                android:textStyle="bold"
+                android:textColor="#008000" />
+
+        </LinearLayout>
 
     </LinearLayout>
 

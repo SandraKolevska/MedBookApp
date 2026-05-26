@@ -96,6 +96,11 @@ class FavoritesActivity : AppCompatActivity() {
                                 "⭐ 4.9",
                                 "10 years experience",
                                 R.drawable.doctor2,
+
+                                "$50",
+
+                                "Experienced cardiologist specialized in heart disease prevention, ECG diagnostics and patient care.",
+
                                 listOf(),
                                 listOf()
                             )
@@ -106,6 +111,11 @@ class FavoritesActivity : AppCompatActivity() {
                                 "⭐ 4.8",
                                 "7 years experience",
                                 R.drawable.doctor3,
+
+                                "$35",
+
+                                "Professional dentist with extensive experience in cosmetic dentistry and oral health treatments.",
+
                                 listOf(),
                                 listOf()
                             )
@@ -116,6 +126,11 @@ class FavoritesActivity : AppCompatActivity() {
                                 "⭐ 4.7",
                                 "5 years experience",
                                 R.drawable.doctor4,
+
+                                "$30",
+
+                                "Friendly pediatrician dedicated to children's health, preventive care and family consultations.",
+
                                 listOf(),
                                 listOf()
                             )

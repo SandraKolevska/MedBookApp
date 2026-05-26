@@ -1,5 +1,6 @@
 package com.example.medbook
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -29,6 +30,9 @@ class DoctorAdapter(
 
         val doctorExperience: TextView =
             itemView.findViewById(R.id.doctorExperience)
+
+        val doctorPrice: TextView =
+            itemView.findViewById(R.id.doctorPrice)
     }
 
     override fun onCreateViewHolder(
@@ -65,6 +69,29 @@ class DoctorAdapter(
         holder.doctorExperience.text =
             doctor.experience
 
+        holder.doctorPrice.text =
+            doctor.price
+
+        holder.doctorExperience.setOnClickListener {
+
+            AlertDialog.Builder(
+                holder.itemView.context
+            )
+                .setTitle(doctor.name)
+
+                .setMessage(
+                    "${doctor.description}\n\n" +
+                            "Consultation Fee: ${doctor.price}"
+                )
+
+                .setPositiveButton(
+                    "OK",
+                    null
+                )
+
+                .show()
+        }
+
         holder.itemView.setOnClickListener {
 
             val context = holder.itemView.context
@@ -98,6 +125,16 @@ class DoctorAdapter(
             intent.putExtra(
                 "doctorImage",
                 doctor.imageResId
+            )
+
+            intent.putExtra(
+                "doctorPrice",
+                doctor.price
+            )
+
+            intent.putExtra(
+                "doctorDescription",
+                doctor.description
             )
 
             intent.putStringArrayListExtra(
