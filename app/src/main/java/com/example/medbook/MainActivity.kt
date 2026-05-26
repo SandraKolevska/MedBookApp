@@ -412,7 +412,7 @@ class MainActivity : AppCompatActivity() {
                         startActivity(
                             Intent(
                                 this,
-                                ProfileActivity::class.java
+                                AppointmentsActivity::class.java
                             )
                         )
                     }

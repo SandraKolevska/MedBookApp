@@ -3,11 +3,9 @@ package com.example.medbook
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.view.Gravity
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -47,9 +45,6 @@ class ProfileActivity : AppCompatActivity() {
         val totalAppointmentsText =
             findViewById<TextView>(R.id.totalAppointmentsText)
 
-        val appointmentsContainer =
-            findViewById<LinearLayout>(R.id.appointmentsContainer)
-
         val favoriteDoctorsContainer =
             findViewById<LinearLayout>(R.id.favoriteDoctorsContainer)
 
@@ -65,7 +60,7 @@ class ProfileActivity : AppCompatActivity() {
         userEmailText.text =
             currentUser?.email
 
-        // LOAD APPOINTMENTS
+        // TOTAL APPOINTMENTS COUNT
         firestore.collection("appointments")
             .whereEqualTo(
                 "userId",
@@ -77,143 +72,6 @@ class ProfileActivity : AppCompatActivity() {
 
                 totalAppointmentsText.text =
                     "Total Appointments: ${documents.size()}"
-
-                appointmentsContainer.removeAllViews()
-
-                for (document in documents) {
-
-                    val doctorName =
-                        document.getString("doctorName")
-
-                    val date =
-                        document.getString("date")
-
-                    val slot =
-                        document.getString("slot")
-
-                    val cardLayout =
-                        LinearLayout(this)
-
-                    cardLayout.orientation =
-                        LinearLayout.VERTICAL
-
-                    cardLayout.setPadding(
-                        40,
-                        40,
-                        40,
-                        40
-                    )
-
-                    cardLayout.setBackgroundColor(
-                        Color.WHITE
-                    )
-
-                    val cardParams =
-                        LinearLayout.LayoutParams(
-                            LinearLayout.LayoutParams.MATCH_PARENT,
-                            LinearLayout.LayoutParams.WRAP_CONTENT
-                        )
-
-                    cardParams.setMargins(
-                        0,
-                        0,
-                        0,
-                        32
-                    )
-
-                    cardLayout.layoutParams =
-                        cardParams
-
-                    val doctorText =
-                        TextView(this)
-
-                    doctorText.text =
-                        doctorName
-
-                    doctorText.textSize = 22f
-
-                    doctorText.setTypeface(
-                        null,
-                        android.graphics.Typeface.BOLD
-                    )
-
-                    val dateText =
-                        TextView(this)
-
-                    dateText.text =
-                        "Date: $date"
-
-                    dateText.textSize = 18f
-
-                    dateText.setPadding(
-                        0,
-                        16,
-                        0,
-                        0
-                    )
-
-                    val slotText =
-                        TextView(this)
-
-                    slotText.text =
-                        "Time: $slot"
-
-                    slotText.textSize = 18f
-
-                    slotText.setPadding(
-                        0,
-                        8,
-                        0,
-                        24
-                    )
-
-                    val cancelBtn =
-                        Button(this)
-
-                    cancelBtn.text =
-                        "Cancel Appointment"
-
-                    cancelBtn.gravity =
-                        Gravity.CENTER
-
-                    cancelBtn.setOnClickListener {
-
-                        firestore.collection("appointments")
-                            .document(document.id)
-                            .delete()
-
-                            .addOnSuccessListener {
-
-                                Toast.makeText(
-                                    this,
-                                    "Appointment canceled",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-
-                                recreate()
-                            }
-                    }
-
-                    cardLayout.addView(
-                        doctorText
-                    )
-
-                    cardLayout.addView(
-                        dateText
-                    )
-
-                    cardLayout.addView(
-                        slotText
-                    )
-
-                    cardLayout.addView(
-                        cancelBtn
-                    )
-
-                    appointmentsContainer.addView(
-                        cardLayout
-                    )
-                }
             }
 
         // LOAD FAVORITES
@@ -288,7 +146,8 @@ class ProfileActivity : AppCompatActivity() {
                     )
                 }
             }
-// LOAD NOTIFICATIONS
+
+        // LOAD NOTIFICATIONS
         firestore.collection("notifications")
             .whereEqualTo(
                 "userId",
@@ -355,6 +214,7 @@ class ProfileActivity : AppCompatActivity() {
                     )
                 }
             }
+
         logoutBtn.setOnClickListener {
 
             auth.signOut()

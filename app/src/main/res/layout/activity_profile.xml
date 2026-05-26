@@ -37,12 +37,7 @@
             android:textStyle="bold"
             android:layout_marginBottom="24dp" />
 
-        <LinearLayout
-            android:id="@+id/appointmentsContainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginBottom="24dp" />
+        <!-- FAVORITES -->
 
         <TextView
             android:layout_width="wrap_content"
@@ -50,7 +45,7 @@
             android:text="Favorite Doctors"
             android:textSize="24sp"
             android:textStyle="bold"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="10dp"
             android:layout_marginBottom="16dp" />
 
         <LinearLayout
@@ -58,6 +53,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" />
+
+        <!-- NOTIFICATIONS -->
 
         <TextView
             android:layout_width="wrap_content"
@@ -74,11 +71,14 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" />
 
+        <!-- LOGOUT -->
+
         <Button
             android:id="@+id/logoutBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Logout" />
+            android:text="Logout"
+            android:layout_marginTop="30dp" />
 
     </LinearLayout>
 
