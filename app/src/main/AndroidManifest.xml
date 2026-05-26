@@ -10,7 +10,7 @@
         android:theme="@style/Theme.MedBook">
 
         <activity
-            android:name=".PaymentActivity"
+            android:name=".FavoritesActivity"
             android:exported="false" />
 
         <activity

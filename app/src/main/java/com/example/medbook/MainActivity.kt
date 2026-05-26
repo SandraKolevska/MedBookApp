@@ -9,6 +9,7 @@ import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import java.util.Calendar
 
@@ -16,7 +17,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var doctorAdapter: DoctorAdapter
-    private lateinit var profileBtn: Button
     private lateinit var searchDoctorsInput: EditText
 
     private lateinit var auth: FirebaseAuth
@@ -34,6 +34,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var entBtn: Button
     private lateinit var radiologistBtn: Button
     private lateinit var surgeonBtn: Button
+
+    private lateinit var bottomNavigationView:
+            BottomNavigationView
 
     private var filteredDoctorList =
         mutableListOf<Doctor>()
@@ -390,24 +393,64 @@ class MainActivity : AppCompatActivity() {
         surgeonBtn =
             findViewById(R.id.surgeonBtn)
 
-        profileBtn =
-            findViewById(R.id.profileBtn)
+        bottomNavigationView =
+            findViewById(R.id.bottomNavigationView)
 
-        profileBtn.setOnClickListener {
+        bottomNavigationView.setOnItemSelectedListener {
 
-            if (auth.currentUser == null) {
+            when (it.itemId) {
 
-                android.widget.Toast.makeText(
-                    this,
-                    "Please login first",
-                    android.widget.Toast.LENGTH_LONG
-                ).show()
+                R.id.nav_home -> {
 
-            } else {
+                    true
+                }
 
-                startActivity(
-                    Intent(this, ProfileActivity::class.java)
-                )
+                R.id.nav_appointments -> {
+
+                    if (auth.currentUser != null) {
+
+                        startActivity(
+                            Intent(
+                                this,
+                                ProfileActivity::class.java
+                            )
+                        )
+                    }
+
+                    true
+                }
+
+                R.id.nav_favorites -> {
+
+                    if (auth.currentUser != null) {
+
+                        startActivity(
+                            Intent(
+                                this,
+                                FavoritesActivity::class.java
+                            )
+                        )
+                    }
+
+                    true
+                }
+
+                R.id.nav_profile -> {
+
+                    if (auth.currentUser != null) {
+
+                        startActivity(
+                            Intent(
+                                this,
+                                ProfileActivity::class.java
+                            )
+                        )
+                    }
+
+                    true
+                }
+
+                else -> false
             }
         }
 
