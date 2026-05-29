@@ -1,5 +1,6 @@
 package com.example.medbook
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.widget.Button
@@ -177,6 +178,22 @@ class AppointmentsActivity : AppCompatActivity() {
 
                     slotText.textSize = 18f
 
+                    val joinBtn =
+                        Button(this)
+
+                    joinBtn.text =
+                        "Join Consultation"
+
+                    joinBtn.setOnClickListener {
+
+                        startActivity(
+                            Intent(
+                                this,
+                                ConsultationActivity::class.java
+                            )
+                        )
+                    }
+
                     val cancelBtn =
                         Button(this)
 
@@ -245,6 +262,10 @@ class AppointmentsActivity : AppCompatActivity() {
 
                     appointmentCard.addView(
                         slotText
+                    )
+
+                    appointmentCard.addView(
+                        joinBtn
                     )
 
                     appointmentCard.addView(

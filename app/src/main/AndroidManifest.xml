@@ -10,6 +10,10 @@
         android:theme="@style/Theme.MedBook">
 
         <activity
+            android:name=".ConsultationActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".FavoritesActivity"
             android:exported="false" />
 
