@@ -562,5 +562,80 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         )
+
+        allDoctorsBtn.setOnClickListener {
+
+            doctorAdapter =
+                DoctorAdapter(doctorList)
+
+            recyclerView.adapter =
+                doctorAdapter
+        }
+
+        cardiologistBtn.setOnClickListener {
+            filterDoctors("Cardiologist")
+        }
+
+        dentistBtn.setOnClickListener {
+            filterDoctors("Dentist")
+        }
+
+        neurologistBtn.setOnClickListener {
+            filterDoctors("Neurologist")
+        }
+
+        pediatricianBtn.setOnClickListener {
+            filterDoctors("Pediatrician")
+        }
+
+        dermatologistBtn.setOnClickListener {
+            filterDoctors("Dermatologist")
+        }
+
+        orthopedicBtn.setOnClickListener {
+            filterDoctors("Orthopedic")
+        }
+
+        gynecologistBtn.setOnClickListener {
+            filterDoctors("Gynecologist")
+        }
+
+        psychiatristBtn.setOnClickListener {
+            filterDoctors("Psychiatrist")
+        }
+
+        ophthalmologistBtn.setOnClickListener {
+            filterDoctors("Ophthalmologist")
+        }
+
+        entBtn.setOnClickListener {
+            filterDoctors("ENT Specialist")
+        }
+
+        radiologistBtn.setOnClickListener {
+            filterDoctors("Radiologist")
+        }
+
+        surgeonBtn.setOnClickListener {
+            filterDoctors("General Surgeon")
+        }
+    }
+
+    private fun filterDoctors(
+        specialization: String
+    ) {
+
+        val filteredList =
+            doctorList.filter {
+
+                it.specialization ==
+                        specialization
+            }
+
+        doctorAdapter =
+            DoctorAdapter(filteredList)
+
+        recyclerView.adapter =
+            doctorAdapter
     }
 }

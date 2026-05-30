@@ -33,6 +33,10 @@ class AppointmentsActivity : AppCompatActivity() {
         supportActionBar?.title =
             "Appointments"
 
+        supportActionBar?.setDisplayHomeAsUpEnabled(
+            true
+        )
+
         firestore =
             FirebaseFirestore.getInstance()
 
@@ -277,5 +281,10 @@ class AppointmentsActivity : AppCompatActivity() {
                     )
                 }
             }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
     }
 }

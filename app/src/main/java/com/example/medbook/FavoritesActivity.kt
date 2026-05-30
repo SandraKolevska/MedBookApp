@@ -35,6 +35,10 @@ class FavoritesActivity : AppCompatActivity() {
         supportActionBar?.title =
             "Favorites"
 
+        supportActionBar?.setDisplayHomeAsUpEnabled(
+            true
+        )
+
         firestore =
             FirebaseFirestore.getInstance()
 
@@ -148,5 +152,10 @@ class FavoritesActivity : AppCompatActivity() {
 
                 doctorAdapter.notifyDataSetChanged()
             }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
     }
 }
