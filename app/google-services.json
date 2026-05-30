@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "90160274793",
+    "project_id": "medbookapp",
+    "storage_bucket": "medbookapp.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:90160274793:android:46123de1f0e6e635c771f8",
+        "android_client_info": {
+          "package_name": "com.example.medbook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "90160274793-h2f92ik3bpfblt5g3be71ekej0cen625.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.medbook",
+            "certificate_hash": "0dee99e9f168425778b1e6c0e5922697775da8b8"
+          }
+        },
+        {
+          "client_id": "90160274793-hskbrh0opf9gcj7v19sgf586ftjr6oae.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKBT2ri3_JOOCtuFceEAqMsnxXCLVjtF0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "90160274793-hskbrh0opf9gcj7v19sgf586ftjr6oae.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

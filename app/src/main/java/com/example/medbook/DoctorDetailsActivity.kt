@@ -146,11 +146,14 @@ class DoctorDetailsActivity : AppCompatActivity() {
 
         favoriteBtn.setOnClickListener {
 
-            if (auth.currentUser == null) {
+            if (
+                auth.currentUser == null ||
+                auth.currentUser!!.isAnonymous
+            ) {
 
                 Toast.makeText(
                     this,
-                    "Please login first",
+                    "Please login with an account",
                     Toast.LENGTH_SHORT
                 ).show()
 
@@ -274,7 +277,10 @@ class DoctorDetailsActivity : AppCompatActivity() {
         // BOOK APPOINTMENT
         bookAppointmentBtn.setOnClickListener {
 
-            if (auth.currentUser == null) {
+            if (
+                auth.currentUser == null ||
+                auth.currentUser!!.isAnonymous
+            ) {
 
                 Toast.makeText(
                     this,
@@ -357,7 +363,10 @@ class DoctorDetailsActivity : AppCompatActivity() {
         // SUBMIT REVIEW
         submitReviewBtn.setOnClickListener {
 
-            if (auth.currentUser == null) {
+            if (
+                auth.currentUser == null ||
+                auth.currentUser!!.isAnonymous
+            ) {
 
                 Toast.makeText(
                     this,

@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">MedBook</string>
+
+    <string name="default_web_client_id">
+        90160274793-hskbrh0opf9gcj7v19sgf586ftjr6oae.apps.googleusercontent.com
+    </string>
 </resources>
