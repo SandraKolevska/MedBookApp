@@ -120,6 +120,21 @@ class LoginActivity : AppCompatActivity() {
 
                         if (task.isSuccessful) {
 
+
+                            val bundle = Bundle()
+
+                            bundle.putString(
+                                "login_method",
+                                "email"
+                            )
+
+                            com.google.firebase.analytics.FirebaseAnalytics
+                                .getInstance(this)
+                                .logEvent(
+                                    "user_login",
+                                    bundle
+                                )
+
                             Toast.makeText(
                                 this,
                                 "Login successful",
@@ -230,6 +245,20 @@ class LoginActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
 
                 if (task.isSuccessful) {
+
+                    val bundle = Bundle()
+
+                    bundle.putString(
+                        "login_method",
+                        "google"
+                    )
+
+                    com.google.firebase.analytics.FirebaseAnalytics
+                        .getInstance(this)
+                        .logEvent(
+                            "user_login",
+                            bundle
+                        )
 
                     Toast.makeText(
                         this,

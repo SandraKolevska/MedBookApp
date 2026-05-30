@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import java.util.Calendar
+import com.google.firebase.analytics.FirebaseAnalytics
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,6 +21,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var searchDoctorsInput: EditText
 
     private lateinit var auth: FirebaseAuth
+
+    private lateinit var firebaseAnalytics:
+            com.google.firebase.analytics.FirebaseAnalytics
 
     private lateinit var allDoctorsBtn: Button
     private lateinit var cardiologistBtn: Button
@@ -398,6 +402,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         auth = FirebaseAuth.getInstance()
+
+        firebaseAnalytics =
+            FirebaseAnalytics.getInstance(this)
+
+        firebaseAnalytics.logEvent(
+            FirebaseAnalytics.Event.APP_OPEN,
+            null
+        )
 
         searchDoctorsInput =
             findViewById(R.id.searchDoctorsInput)

@@ -187,6 +187,25 @@ class DoctorDetailsActivity : AppCompatActivity() {
 
                             .addOnSuccessListener {
 
+                                val bundle = Bundle()
+
+                                bundle.putString(
+                                    "doctor_name",
+                                    name
+                                )
+
+                                bundle.putString(
+                                    "specialization",
+                                    specialization
+                                )
+
+                                com.google.firebase.analytics.FirebaseAnalytics
+                                    .getInstance(this)
+                                    .logEvent(
+                                        "favorite_added",
+                                        bundle
+                                    )
+
                                 favoriteBtn.text =
                                     "❤️ Remove Favorite"
 
@@ -309,6 +328,25 @@ class DoctorDetailsActivity : AppCompatActivity() {
                     .add(appointment)
 
                     .addOnSuccessListener {
+
+                        val bundle = Bundle()
+
+                        bundle.putString(
+                            "doctor_name",
+                            name
+                        )
+
+                        bundle.putString(
+                            "specialization",
+                            specialization
+                        )
+
+                        com.google.firebase.analytics.FirebaseAnalytics
+                            .getInstance(this)
+                            .logEvent(
+                                "appointment_booked",
+                                bundle
+                            )
 
                         AlertDialog.Builder(this)
                             .setTitle("Appointment Confirmed")
