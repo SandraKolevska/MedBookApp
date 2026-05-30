@@ -19,6 +19,14 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
 import java.util.Calendar
 import java.util.GregorianCalendar
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.os.Build
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
+import android.Manifest
+import android.content.pm.PackageManager
+import androidx.core.app.ActivityCompat
 
 class DoctorDetailsActivity : AppCompatActivity() {
 
@@ -35,6 +43,25 @@ class DoctorDetailsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+
+            if (
+                ActivityCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.POST_NOTIFICATIONS
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+
+                ActivityCompat.requestPermissions(
+                    this,
+                    arrayOf(
+                        Manifest.permission.POST_NOTIFICATIONS
+                    ),
+                    100
+                )
+            }
+        }
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
@@ -347,6 +374,10 @@ class DoctorDetailsActivity : AppCompatActivity() {
                                 "appointment_booked",
                                 bundle
                             )
+
+                        showAppointmentNotification(
+                            name ?: "Doctor"
+                        )
 
                         AlertDialog.Builder(this)
                             .setTitle("Appointment Confirmed")
@@ -724,6 +755,62 @@ class DoctorDetailsActivity : AppCompatActivity() {
 
             slotsContainer.addView(slotButton)
         }
+    }
+    private fun showAppointmentNotification(
+        doctorName: String
+    ) {
+
+        val channelId = "medbook_channel"
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+
+            val channel = NotificationChannel(
+                channelId,
+                "MedBook Notifications",
+                NotificationManager.IMPORTANCE_DEFAULT
+            )
+
+            val manager =
+                getSystemService(
+                    NotificationManager::class.java
+                )
+
+            manager.createNotificationChannel(
+                channel
+            )
+        }
+
+        val builder =
+            NotificationCompat.Builder(
+                this,
+                channelId
+            )
+
+                .setSmallIcon(
+                    android.R.drawable.ic_dialog_info
+                )
+
+                .setContentTitle(
+                    "Appointment Confirmed"
+                )
+
+                .setContentText(
+                    "Your appointment with $doctorName has been booked successfully."
+                )
+
+                .setPriority(
+                    NotificationCompat.PRIORITY_DEFAULT
+                )
+
+        val notificationManager =
+            getSystemService(
+                NotificationManager::class.java
+            )
+
+        notificationManager.notify(
+            System.currentTimeMillis().toInt(),
+            builder.build()
+        )
     }
 
     override fun onSupportNavigateUp(): Boolean {

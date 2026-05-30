@@ -13,6 +13,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import java.util.Calendar
 import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.messaging.FirebaseMessaging
 
 class MainActivity : AppCompatActivity() {
 
@@ -402,6 +403,26 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         auth = FirebaseAuth.getInstance()
+
+        FirebaseMessaging.getInstance().token
+
+            .addOnCompleteListener { task ->
+
+                if (task.isSuccessful) {
+
+                    android.util.Log.d(
+                        "FCM_TOKEN",
+                        "TOKEN = ${task.result}"
+                    )
+
+                } else {
+
+                    android.util.Log.d(
+                        "FCM_TOKEN",
+                        "FAILED"
+                    )
+                }
+            }
 
         firebaseAnalytics =
             FirebaseAnalytics.getInstance(this)
