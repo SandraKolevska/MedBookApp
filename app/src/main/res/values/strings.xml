@@ -1,7 +1,146 @@
 <resources>
+
     <string name="app_name">MedBook</string>
 
     <string name="default_web_client_id">
         90160274793-hskbrh0opf9gcj7v19sgf586ftjr6oae.apps.googleusercontent.com
     </string>
+
+    <!-- LOGIN -->
+    <string name="login_title">MedBook Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="continue_as_guest">Continue as Guest</string>
+    <string name="login_google">Login with Google</string>
+    <string name="create_account">Create Account</string>
+    <string name="register_title">Create Account</string>
+    <string name="register">Register</string>
+    <string name="home_subtitle">Book appointments easily</string>
+    <string name="search_doctors">Search doctors...</string>
+
+    <string name="all">All</string>
+    <string name="cardio">Cardio</string>
+    <string name="dentist">Dentist</string>
+    <string name="pediatric">Pediatric</string>
+    <string name="neuro">Neuro</string>
+    <string name="dermatology">Dermatology</string>
+    <string name="orthopedic">Orthopedic</string>
+    <string name="gynecology">Gynecology</string>
+    <string name="psychiatry">Psychiatry</string>
+    <string name="eye">Eye</string>
+    <string name="ent">ENT</string>
+    <string name="radiology">Radiology</string>
+    <string name="surgery">Surgery</string>
+    <string name="add_to_favorites">♡ Add to Favorites</string>
+
+    <string name="experience">Experience</string>
+    <string name="consultation_fee">Consultation Fee</string>
+
+    <string name="about_doctor">About Doctor</string>
+
+    <string name="appointment_date">Appointment Date</string>
+    <string name="select_date">Select Date</string>
+    <string name="no_date_selected">No date selected</string>
+
+    <string name="available_time_slots">Available Time Slots</string>
+
+    <string name="book_appointment">Book Appointment</string>
+
+    <string name="reviews">Reviews</string>
+    <string name="write_review">Write review...</string>
+    <string name="submit_review">Submit Review</string>
+    <string name="login_with_account">Please login with an account</string>
+    <string name="added_to_favorites">Added to favorites</string>
+    <string name="removed_from_favorites">Removed from favorites</string>
+    <string name="doctor_unavailable">Doctor is unavailable on selected day</string>
+    <string name="login_to_book">Please login to book appointments</string>
+    <string name="failed_save_appointment">Failed to save appointment</string>
+    <string name="select_date_time">Please select date and time</string>
+    <string name="login_leave_review">Please login to leave reviews</string>
+    <string name="add_rating_review">Add rating and review</string>
+    <string name="already_reviewed">You already reviewed this doctor</string>
+    <string name="review_submitted">Review submitted</string>
+    <string name="home">Home</string>
+    <string name="appointments">Appointments</string>
+    <string name="favorites">Favorites</string>
+    <string name="profile">Profile</string>
+    <string name="my_profile">My Profile</string>
+    <string name="total_appointments">Total Appointments</string>
+    <string name="favorite_doctors">Favorite Doctors</string>
+    <string name="notifications">Notifications</string>
+    <string name="logout">Logout</string>
+    <string name="my_favorites">My Favorites</string>
+    <string name="my_appointments">My Appointments</string>
+    <string name="online_consultation">Online Consultation</string>
+    <string name="consultation_progress">Consultation in progress...</string>
+    <string name="mic">🎤 Mic</string>
+    <string name="camera">📷 Camera</string>
+    <string name="end_consultation">End Consultation</string>
+    <string name="cancel_appointment">Cancel Appointment</string>
+    <string name="total_appointments_count">
+    Total Appointments: %1$d
+</string>
+    <string name="appointments_title">Appointments</string>
+    <string name="no_appointments">No appointments yet</string>
+
+    <string name="join_consultation">Join Consultation</string>
+
+    <string name="cancel_appointment_title">Cancel Appointment</string>
+    <string name="confirm_cancel">Are you sure?</string>
+
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
+    <string name="appointment_cancelled">Appointment cancelled</string>
+    <string name="registration_successful">Registration Successful</string>
+    <string name="registration_failed">Registration Failed</string>
+    <string name="enter_email_password">Enter email and password</string>
+    <string name="google_signin_failed">Google Sign-In Failed</string>
+
+    <string name="login_successful">Login successful</string>
+    <string name="authentication_failed">Authentication failed</string>
+
+    <string name="anonymous_login_successful">
+    Anonymous Login Successful
+</string>
+
+    <string name="anonymous_login_failed">
+    Anonymous Login Failed
+</string>
+
+    <string name="google_login_successful">
+    Google Login Successful
+</string>
+
+    <string name="google_authentication_failed">
+    Google Authentication Failed
+</string>
+    <string name="remove_favorite">❤️ Remove Favorite</string>
+    <string name="add_favorite">♡ Add to Favorites</string>
+
+    <string name="selected_date">Selected Date: %1$s</string>
+    <string name="selected_slot">Selected: %1$s</string>
+
+    <string name="appointment_confirmed">Appointment Confirmed</string>
+
+    <string name="appointment_details">
+    Doctor: %1$s
+
+    Date: %2$s
+
+    Time: %3$s
+</string>
+
+    <string name="ok">OK</string>
+
+    <string name="medbook_notifications">MedBook Notifications</string>
+
+    <string name="appointment_notification_text">
+    Your appointment with %1$s has been booked successfully.
+</string>
+    <string name="please_login_first">
+    Please login first
+</string>
+
 </resources>

@@ -9,9 +9,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@id/bottomNavigationView"
         android:orientation="vertical"
-        android:padding="16dp"
-        android:layout_above="@id/bottomNavigationView">
+        android:padding="16dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -24,7 +24,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Book appointments easily"
+            android:text="@string/home_subtitle"
             android:textSize="16sp"
             android:textColor="#777777"
             android:layout_marginBottom="16dp" />
@@ -33,7 +33,7 @@
             android:id="@+id/searchDoctorsInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Search doctors..."
+            android:hint="@string/search_doctors"
             android:padding="12dp"
             android:background="#FFFFFF"
             android:layout_marginBottom="16dp" />
@@ -53,90 +53,90 @@
                     android:id="@+id/allDoctorsBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="All" />
+                    android:text="@string/all" />
 
                 <Button
                     android:id="@+id/cardiologistBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Cardio"
+                    android:text="@string/cardio"
                     android:layout_marginStart="8dp" />
 
                 <Button
                     android:id="@+id/dentistBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Dentist"
+                    android:text="@string/dentist"
                     android:layout_marginStart="8dp" />
 
                 <Button
                     android:id="@+id/pediatricianBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Pediatric"
+                    android:text="@string/pediatric"
                     android:layout_marginStart="8dp" />
 
                 <Button
                     android:id="@+id/neurologistBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Neuro"
+                    android:text="@string/neuro"
                     android:layout_marginStart="8dp" />
 
                 <Button
                     android:id="@+id/dermatologistBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Dermatology"
+                    android:text="@string/dermatology"
                     android:layout_marginStart="8dp" />
 
                 <Button
                     android:id="@+id/orthopedicBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Orthopedic"
+                    android:text="@string/orthopedic"
                     android:layout_marginStart="8dp" />
 
                 <Button
                     android:id="@+id/gynecologistBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Gynecology"
+                    android:text="@string/gynecology"
                     android:layout_marginStart="8dp" />
 
                 <Button
                     android:id="@+id/psychiatristBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Psychiatry"
+                    android:text="@string/psychiatry"
                     android:layout_marginStart="8dp" />
 
                 <Button
                     android:id="@+id/ophthalmologistBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Eye"
+                    android:text="@string/eye"
                     android:layout_marginStart="8dp" />
 
                 <Button
                     android:id="@+id/entBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="ENT"
+                    android:text="@string/ent"
                     android:layout_marginStart="8dp" />
 
                 <Button
                     android:id="@+id/radiologistBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Radiology"
+                    android:text="@string/radiology"
                     android:layout_marginStart="8dp" />
 
                 <Button
                     android:id="@+id/surgeonBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Surgery"
+                    android:text="@string/surgery"
                     android:layout_marginStart="8dp" />
 
             </LinearLayout>

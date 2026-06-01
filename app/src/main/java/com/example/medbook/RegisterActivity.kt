@@ -37,7 +37,7 @@ class RegisterActivity : AppCompatActivity() {
 
                             Toast.makeText(
                                 this,
-                                "Registration Successful",
+                                getString(R.string.registration_successful),
                                 Toast.LENGTH_SHORT
                             ).show()
 
@@ -51,7 +51,7 @@ class RegisterActivity : AppCompatActivity() {
 
                             Toast.makeText(
                                 this,
-                                "Registration Failed",
+                                getString(R.string.registration_failed),
                                 Toast.LENGTH_SHORT
                             ).show()
                         }
@@ -61,7 +61,7 @@ class RegisterActivity : AppCompatActivity() {
 
                 Toast.makeText(
                     this,
-                    "Enter email and password",
+                    getString(R.string.enter_email_password),
                     Toast.LENGTH_SHORT
                 ).show()
             }

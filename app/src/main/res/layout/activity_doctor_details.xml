@@ -49,7 +49,7 @@
             android:id="@+id/favoriteBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="♡ Add to Favorites"
+            android:text="@string/add_to_favorites"
             android:layout_marginTop="16dp" />
 
         <LinearLayout
@@ -69,7 +69,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Experience"
+                    android:text="@string/experience"
                     android:textStyle="bold" />
 
                 <TextView
@@ -97,7 +97,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Consultation Fee"
+                    android:text="@string/consultation_fee"
                     android:textStyle="bold" />
 
                 <TextView
@@ -117,7 +117,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="About Doctor"
+            android:text="@string/about_doctor"
             android:textSize="24sp"
             android:textStyle="bold"
             android:layout_marginTop="30dp" />
@@ -139,7 +139,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Appointment Date"
+            android:text="@string/appointment_date"
             android:textSize="24sp"
             android:textStyle="bold"
             android:layout_marginTop="30dp" />
@@ -148,14 +148,14 @@
             android:id="@+id/selectDateBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Select Date"
+            android:text="@string/select_date"
             android:layout_marginTop="16dp" />
 
         <TextView
             android:id="@+id/selectedDateText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="No date selected"
+            android:text="@string/no_date_selected"
             android:textSize="18sp"
             android:layout_marginTop="12dp" />
 
@@ -164,7 +164,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Available Time Slots"
+            android:text="@string/available_time_slots"
             android:textSize="24sp"
             android:textStyle="bold"
             android:layout_marginTop="30dp" />
@@ -180,7 +180,7 @@
             android:id="@+id/bookAppointmentBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Book Appointment"
+            android:text="@string/book_appointment"
             android:layout_marginTop="30dp"
             android:padding="16dp" />
 
@@ -189,7 +189,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Reviews"
+            android:text="@string/reviews"
             android:textSize="24sp"
             android:textStyle="bold"
             android:layout_marginTop="30dp"
@@ -206,7 +206,7 @@
             android:id="@+id/reviewInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Write review..."
+            android:hint="@string/write_review"
             android:layout_marginTop="12dp"
             android:background="#FFFFFF"
             android:padding="12dp" />
@@ -215,7 +215,7 @@
             android:id="@+id/submitReviewBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Submit Review"
+            android:text="@string/submit_review"
             android:layout_marginTop="12dp"
             android:layout_marginBottom="16dp" />
 

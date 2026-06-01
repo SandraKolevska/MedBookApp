@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Online Consultation"
+        android:text="@string/online_consultation"
         android:textSize="28sp"
         android:textStyle="bold"
         android:layout_gravity="center_horizontal"
@@ -48,7 +48,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Consultation in progress..."
+        android:text="@string/consultation_progress"
         android:textSize="16sp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="16dp" />
@@ -74,13 +74,13 @@
             android:id="@+id/micBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="🎤 Mic" />
+            android:text="@string/mic" />
 
         <Button
             android:id="@+id/cameraBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="📷 Camera"
+            android:text="@string/camera"
             android:layout_marginStart="16dp" />
 
     </LinearLayout>
@@ -89,7 +89,7 @@
         android:id="@+id/endCallBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="End Consultation"
+        android:text="@string/end_consultation"
         android:layout_marginTop="40dp" />
 
 </LinearLayout>

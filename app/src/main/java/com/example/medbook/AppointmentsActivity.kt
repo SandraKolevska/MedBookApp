@@ -23,6 +23,38 @@ class AppointmentsActivity : AppCompatActivity() {
     private lateinit var appointmentsContainer:
             LinearLayout
 
+    private fun translateSpecialization(
+        specialization: String?
+    ): String {
+
+        val isMk =
+            resources.configuration
+                .locales[0]
+                .language == "mk"
+
+        if (!isMk) {
+            return specialization ?: ""
+        }
+
+        return when (specialization) {
+
+            "Cardiologist" -> "Кардиолог"
+            "Dentist" -> "Стоматолог"
+            "Pediatrician" -> "Педијатар"
+            "Neurologist" -> "Невролог"
+            "Dermatologist" -> "Дерматолог"
+            "Orthopedic" -> "Ортопед"
+            "Gynecologist" -> "Гинеколог"
+            "Psychiatrist" -> "Психијатар"
+            "Ophthalmologist" -> "Офталмолог"
+            "ENT Specialist" -> "ОРЛ Специјалист"
+            "Radiologist" -> "Радиолог"
+            "General Surgeon" -> "Општ Хирург"
+
+            else -> specialization ?: ""
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -31,7 +63,7 @@ class AppointmentsActivity : AppCompatActivity() {
         )
 
         supportActionBar?.title =
-            "Appointments"
+            getString(R.string.appointments_title)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(
             true
@@ -68,7 +100,7 @@ class AppointmentsActivity : AppCompatActivity() {
                         TextView(this)
 
                     emptyText.text =
-                        "No appointments yet"
+                        getString(R.string.no_appointments)
 
                     emptyText.textSize = 18f
 
@@ -151,7 +183,9 @@ class AppointmentsActivity : AppCompatActivity() {
                         TextView(this)
 
                     specializationText.text =
-                        specialization
+                        translateSpecialization(
+                            specialization
+                        )
 
                     specializationText.textSize = 18f
 
@@ -186,7 +220,7 @@ class AppointmentsActivity : AppCompatActivity() {
                         Button(this)
 
                     joinBtn.text =
-                        "Join Consultation"
+                        getString(R.string.join_consultation)
 
                     joinBtn.setOnClickListener {
 
@@ -202,7 +236,7 @@ class AppointmentsActivity : AppCompatActivity() {
                         Button(this)
 
                     cancelBtn.text =
-                        "Cancel Appointment"
+                        getString(R.string.cancel_appointment)
 
                     cancelBtn.setPadding(
                         0,
@@ -215,15 +249,15 @@ class AppointmentsActivity : AppCompatActivity() {
 
                         AlertDialog.Builder(this)
                             .setTitle(
-                                "Cancel Appointment"
+                                getString(R.string.cancel_appointment_title)
                             )
 
                             .setMessage(
-                                "Are you sure?"
+                                getString(R.string.confirm_cancel)
                             )
 
                             .setPositiveButton(
-                                "Yes"
+                                getString(R.string.yes)
                             ) { _, _ ->
 
                                 firestore.collection(
@@ -236,7 +270,7 @@ class AppointmentsActivity : AppCompatActivity() {
 
                                         Toast.makeText(
                                             this,
-                                            "Appointment cancelled",
+                                            getString(R.string.appointment_cancelled),
                                             Toast.LENGTH_SHORT
                                         ).show()
 
@@ -245,7 +279,7 @@ class AppointmentsActivity : AppCompatActivity() {
                             }
 
                             .setNegativeButton(
-                                "No",
+                                getString(R.string.no),
                                 null
                             )
 

@@ -33,7 +33,7 @@ class FavoritesActivity : AppCompatActivity() {
         )
 
         supportActionBar?.title =
-            "Favorites"
+            getString(R.string.my_favorites)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(
             true
@@ -66,7 +66,7 @@ class FavoritesActivity : AppCompatActivity() {
 
             Toast.makeText(
                 this,
-                "Please login first",
+                getString(R.string.please_login_first),
                 Toast.LENGTH_LONG
             ).show()
 

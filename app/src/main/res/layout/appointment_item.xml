@@ -42,7 +42,7 @@
         android:id="@+id/deleteAppointmentBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Cancel Appointment"
+        android:text="@string/cancel_appointment"
         android:layout_marginTop="12dp" />
 
 </LinearLayout>

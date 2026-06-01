@@ -1,0 +1,148 @@
+<resources>
+
+    <string name="app_name">MedBook</string>
+
+    <string name="login_title">Најава во MedBook</string>
+    <string name="email">Е-пошта</string>
+    <string name="password">Лозинка</string>
+    <string name="login">Најава</string>
+    <string name="continue_as_guest">Продолжи како гостин</string>
+    <string name="login_google">Најава со Google</string>
+    <string name="create_account">Креирај профил</string>
+    <string name="register_title">Креирај профил</string>
+    <string name="register">Регистрација</string>
+    <string name="home_subtitle">Закажете термин лесно</string>
+    <string name="search_doctors">Пребарај доктори...</string>
+
+    <string name="all">Сите</string>
+    <string name="cardio">Кардио</string>
+    <string name="dentist">Стоматолог</string>
+    <string name="pediatric">Педијатар</string>
+    <string name="neuro">Невролог</string>
+    <string name="dermatology">Дерматологија</string>
+    <string name="orthopedic">Ортопед</string>
+    <string name="gynecology">Гинекологија</string>
+    <string name="psychiatry">Психијатрија</string>
+    <string name="eye">Очно</string>
+    <string name="ent">ОРЛ</string>
+    <string name="radiology">Радиологија</string>
+    <string name="surgery">Хирургија</string>
+    <string name="add_to_favorites">♡ Додај во омилени</string>
+
+    <string name="experience">Искуство</string>
+    <string name="consultation_fee">Цена на преглед</string>
+
+    <string name="about_doctor">За докторот</string>
+
+    <string name="appointment_date">Датум на термин</string>
+    <string name="select_date">Избери датум</string>
+    <string name="no_date_selected">Нема избран датум</string>
+
+    <string name="available_time_slots">Достапни термини</string>
+
+    <string name="book_appointment">Закажи термин</string>
+
+    <string name="reviews">Прегледи</string>
+    <string name="write_review">Напиши мислење...</string>
+    <string name="submit_review">Испрати мислење</string>
+    <string name="login_with_account">Најавете се со профил</string>
+    <string name="added_to_favorites">Додадено во омилени</string>
+    <string name="removed_from_favorites">Отстрането од омилени</string>
+    <string name="doctor_unavailable">Докторот не е достапен на избраниот ден</string>
+    <string name="login_to_book">Најавете се за закажување термин</string>
+    <string name="failed_save_appointment">Неуспешно зачувување на терминот</string>
+    <string name="select_date_time">Изберете датум и време</string>
+    <string name="login_leave_review">Најавете се за да оставите мислење</string>
+    <string name="add_rating_review">Додадете оцена и мислење</string>
+    <string name="already_reviewed">Веќе оставивте мислење за овој доктор</string>
+    <string name="review_submitted">Мислењето е испратено</string>
+    <string name="home">Почетна</string>
+    <string name="appointments">Термини</string>
+    <string name="favorites">Омилени</string>
+    <string name="profile">Профил</string>
+    <string name="my_profile">Мој Профил</string>
+    <string name="total_appointments">Вкупно термини</string>
+    <string name="favorite_doctors">Омилени доктори</string>
+    <string name="notifications">Известувања</string>
+    <string name="logout">Одјава</string>
+    <string name="my_favorites">Мои Омилени</string>
+    <string name="my_appointments">Мои Термини</string>
+    <string name="online_consultation">Онлајн Консултација</string>
+    <string name="consultation_progress">Консултацијата е во тек...</string>
+    <string name="mic">🎤 Микрофон</string>
+    <string name="camera">📷 Камера</string>
+    <string name="end_consultation">Заврши Консултација</string>
+    <string name="cancel_appointment">Откажи Термин</string>
+    <string name="total_appointments_count">
+    Вкупно термини: %1$d
+</string>
+    <string name="appointments_title">Термини</string>
+    <string name="no_appointments">Сè уште нема термини</string>
+
+    <string name="join_consultation">Приклучи се на консултација</string>
+
+    <string name="cancel_appointment_title">Откажи термин</string>
+    <string name="confirm_cancel">Дали сте сигурни?</string>
+
+    <string name="yes">Да</string>
+    <string name="no">Не</string>
+
+    <string name="appointment_cancelled">Терминот е откажан</string>
+    <string name="registration_successful">Регистрацијата е успешна</string>
+    <string name="registration_failed">Регистрацијата не успеа</string>
+    <string name="enter_email_password">Внесете е-пошта и лозинка</string>
+    <string name="google_signin_failed">
+    Google најавата не успеа
+</string>
+
+    <string name="login_successful">
+    Успешна најава
+</string>
+
+    <string name="authentication_failed">
+    Неуспешна автентикација
+</string>
+
+    <string name="anonymous_login_successful">
+    Успешна анонимна најава
+</string>
+
+    <string name="anonymous_login_failed">
+    Неуспешна анонимна најава
+</string>
+
+    <string name="google_login_successful">
+    Успешна Google најава
+</string>
+
+    <string name="google_authentication_failed">
+    Google автентикацијата не успеа
+</string>
+    <string name="remove_favorite">❤️ Отстрани од омилени</string>
+    <string name="add_favorite">♡ Додај во омилени</string>
+
+    <string name="selected_date">Избран датум: %1$s</string>
+    <string name="selected_slot">Избрано: %1$s</string>
+
+    <string name="appointment_confirmed">Терминот е потврден</string>
+
+    <string name="appointment_details">
+    Доктор: %1$s
+
+    Датум: %2$s
+
+    Време: %3$s
+</string>
+
+    <string name="ok">ОК</string>
+
+    <string name="medbook_notifications">MedBook Известувања</string>
+
+    <string name="appointment_notification_text">
+    Вашиот термин кај %1$s е успешно закажан.
+</string>
+    <string name="please_login_first">
+    Најавете се прво
+</string>
+
+</resources>

@@ -30,6 +30,118 @@ import androidx.core.app.ActivityCompat
 
 class DoctorDetailsActivity : AppCompatActivity() {
 
+    private fun translateSpecialization(
+        specialization: String?
+    ): String {
+
+        val isMk =
+            resources.configuration
+                .locales[0]
+                .language == "mk"
+
+        if (!isMk) {
+            return specialization ?: ""
+        }
+
+        return when (specialization) {
+
+            "Cardiologist" -> "Кардиолог"
+            "Dentist" -> "Стоматолог"
+            "Pediatrician" -> "Педијатар"
+            "Neurologist" -> "Невролог"
+            "Dermatologist" -> "Дерматолог"
+            "Orthopedic" -> "Ортопед"
+            "Gynecologist" -> "Гинеколог"
+            "Psychiatrist" -> "Психијатар"
+            "Ophthalmologist" -> "Офталмолог"
+            "ENT Specialist" -> "ОРЛ Специјалист"
+            "Radiologist" -> "Радиолог"
+            "General Surgeon" -> "Општ Хирург"
+
+            else -> specialization ?: ""
+        }
+    }
+
+    private fun translateExperience(
+        experience: String?
+    ): String {
+
+        val isMk =
+            resources.configuration
+                .locales[0]
+                .language == "mk"
+
+        if (!isMk) {
+            return experience ?: ""
+        }
+
+        return experience
+            ?.replace(
+                " years experience",
+                " години искуство"
+            )
+            ?.replace(
+                " year experience",
+                " година искуство"
+            )
+            ?: ""
+    }
+
+    private fun translateDescription(
+        description: String?
+    ): String {
+
+        val isMk =
+            resources.configuration
+                .locales[0]
+                .language == "mk"
+
+        if (!isMk) {
+            return description ?: ""
+        }
+
+        return when (description) {
+
+            "Experienced cardiologist specialized in heart disease prevention, ECG diagnostics and patient care." ->
+                "Искусен кардиолог специјализиран за превенција на срцеви заболувања, ЕКГ дијагностика и грижа за пациентите."
+
+            "Professional dentist with extensive experience in cosmetic dentistry and oral health treatments." ->
+                "Професионален стоматолог со долгогодишно искуство во естетска стоматологија и третмани за орално здравје."
+
+            "Friendly pediatrician dedicated to children's health, preventive care and family consultations." ->
+                "Пријателски настроен педијатар посветен на здравјето на децата, превентивната грижа и семејните консултации."
+
+            "Highly experienced neurologist focused on brain disorders, migraines and neurological diagnostics." ->
+                "Високо искусен невролог специјализиран за мозочни заболувања, мигрени и невролошка дијагностика."
+
+            "Dermatology specialist experienced in skin care treatments, acne therapy and cosmetic procedures." ->
+                "Дерматолог специјализиран за третмани на кожа, терапија за акни и естетски процедури."
+
+            "Orthopedic specialist helping patients recover from injuries, fractures and joint problems." ->
+                "Ортопед кој им помага на пациентите во закрепнување од повреди, скршеници и проблеми со зглобовите."
+
+            "Experienced gynecologist focused on women's health, pregnancy care and preventive examinations." ->
+                "Искусен гинеколог специјализиран за здравјето на жените, следење на бременост и превентивни прегледи."
+
+            "Compassionate psychiatrist helping patients with anxiety, stress management and mental wellness." ->
+                "Психијатар кој им помага на пациентите во справување со анксиозност, стрес и ментална благосостојба."
+
+            "Eye specialist providing vision care, diagnostics and treatment for various eye conditions." ->
+                "Офталмолог кој обезбедува грижа за видот, дијагностика и третман на различни очни заболувања."
+
+            "ENT specialist treating ear, nose and throat conditions with modern medical approaches." ->
+                "ОРЛ специјалист за лекување на заболувања на уво, нос и грло со современи медицински пристапи."
+
+            "Expert radiologist specialized in MRI, CT scan diagnostics and medical imaging interpretation." ->
+                "Радиолог специјализиран за МРИ, КТ дијагностика и интерпретација на медицински снимки."
+
+            "Highly skilled surgeon with extensive experience in complex surgeries and patient recovery care." ->
+                "Високо квалификуван хирург со долгогодишно искуство во сложени операции и постоперативна грижа за пациентите."
+
+            else -> description ?: ""
+        }
+    }
+
     private var selectedSlot = ""
     private var selectedDate = ""
 
@@ -150,14 +262,20 @@ class DoctorDetailsActivity : AppCompatActivity() {
             ) ?: arrayListOf()
 
         doctorName.text = name
-        doctorSpecialization.text = specialization
-        doctorRating.text = rating
-        doctorExperience.text = experience
+        doctorSpecialization.text =
+            translateSpecialization(
+                specialization
+            )
 
-        doctorFee.text = fee
+        doctorExperience.text =
+            translateExperience(
+                experience
+            )
 
         doctorDescription.text =
-            description
+            translateDescription(
+                description
+            )
 
         doctorImage.setImageResource(image)
 
@@ -180,7 +298,7 @@ class DoctorDetailsActivity : AppCompatActivity() {
 
                 Toast.makeText(
                     this,
-                    "Please login with an account",
+                    getString(R.string.login_with_account),
                     Toast.LENGTH_SHORT
                 ).show()
 
@@ -234,11 +352,11 @@ class DoctorDetailsActivity : AppCompatActivity() {
                                     )
 
                                 favoriteBtn.text =
-                                    "❤️ Remove Favorite"
+                                    getString(R.string.remove_favorite)
 
                                 Toast.makeText(
                                     this,
-                                    "Added to favorites",
+                                    getString(R.string.added_to_favorites),
                                     Toast.LENGTH_SHORT
                                 ).show()
                             }
@@ -253,11 +371,11 @@ class DoctorDetailsActivity : AppCompatActivity() {
                         }
 
                         favoriteBtn.text =
-                            "♡ Add to Favorites"
+                            getString(R.string.add_favorite)
 
                         Toast.makeText(
                             this,
-                            "Removed from favorites",
+                            getString(R.string.removed_from_favorites),
                             Toast.LENGTH_SHORT
                         ).show()
                     }
@@ -294,7 +412,7 @@ class DoctorDetailsActivity : AppCompatActivity() {
 
                         Toast.makeText(
                             this,
-                            "Doctor is unavailable on selected day",
+                            getString(R.string.doctor_unavailable),
                             Toast.LENGTH_LONG
                         ).show()
 
@@ -305,7 +423,10 @@ class DoctorDetailsActivity : AppCompatActivity() {
                         "$selectedDay/${selectedMonth + 1}/$selectedYear"
 
                     selectedDateText.text =
-                        "Selected Date: $selectedDate"
+                        getString(
+                            R.string.selected_date,
+                            selectedDate
+                        )
 
                     loadSlots(
                         slotsContainer,
@@ -330,7 +451,7 @@ class DoctorDetailsActivity : AppCompatActivity() {
 
                 Toast.makeText(
                     this,
-                    "Please login to book appointments",
+                    getString(R.string.login_to_book),
                     Toast.LENGTH_LONG
                 ).show()
 
@@ -380,25 +501,47 @@ class DoctorDetailsActivity : AppCompatActivity() {
                         )
 
                         AlertDialog.Builder(this)
-                            .setTitle("Appointment Confirmed")
-
-                            .setMessage(
-                                "Doctor: $name\n\n" +
-                                        "Date: $selectedDate\n\n" +
-                                        "Time: $selectedSlot"
+                            .setTitle(
+                                getString(R.string.appointment_confirmed)
                             )
 
-                            .setPositiveButton("OK") { dialog, _ ->
+                            .setMessage(
+                                getString(
+                                    R.string.appointment_details,
+                                    name,
+                                    selectedDate,
+                                    selectedSlot
+                                )
+                            )
+
+                            .setPositiveButton(
+                                getString(R.string.ok)
+                            )
+                            { dialog, _ ->
                                 dialog.dismiss()
                             }
 
                             .show()
 
+                        val notificationMessage =
+
+                            if (
+                                resources.configuration.locales[0]
+                                    .language == "mk"
+                            ) {
+
+                                "🔔 Закажан термин кај $name"
+
+                            } else {
+
+                                "🔔 Appointment booked with $name"
+                            }
+
                         val notification = Notification(
 
                             auth.currentUser!!.uid,
 
-                            "🔔 Appointment booked with $name"
+                            notificationMessage
                         )
 
                         firestore.collection("notifications")
@@ -414,7 +557,7 @@ class DoctorDetailsActivity : AppCompatActivity() {
 
                         Toast.makeText(
                             this,
-                            "Failed to save appointment",
+                            getString(R.string.failed_save_appointment),
                             Toast.LENGTH_LONG
                         ).show()
                     }
@@ -423,7 +566,7 @@ class DoctorDetailsActivity : AppCompatActivity() {
 
                 Toast.makeText(
                     this,
-                    "Please select date and time",
+                    getString(R.string.select_date_time),
                     Toast.LENGTH_SHORT
                 ).show()
             }
@@ -439,7 +582,7 @@ class DoctorDetailsActivity : AppCompatActivity() {
 
                 Toast.makeText(
                     this,
-                    "Please login to leave reviews",
+                    getString(R.string.login_leave_review),
                     Toast.LENGTH_LONG
                 ).show()
 
@@ -459,7 +602,7 @@ class DoctorDetailsActivity : AppCompatActivity() {
 
                 Toast.makeText(
                     this,
-                    "Add rating and review",
+                    getString(R.string.add_rating_review),
                     Toast.LENGTH_SHORT
                 ).show()
 
@@ -483,7 +626,7 @@ class DoctorDetailsActivity : AppCompatActivity() {
 
                         Toast.makeText(
                             this,
-                            "You already reviewed this doctor",
+                            getString(R.string.already_reviewed),
                             Toast.LENGTH_LONG
                         ).show()
 
@@ -507,7 +650,7 @@ class DoctorDetailsActivity : AppCompatActivity() {
 
                                 Toast.makeText(
                                     this,
-                                    "Review submitted",
+                                    getString(R.string.review_submitted),
                                     Toast.LENGTH_SHORT
                                 ).show()
 
@@ -550,12 +693,12 @@ class DoctorDetailsActivity : AppCompatActivity() {
                 if (documents.isEmpty) {
 
                     favoriteBtn.text =
-                        "♡ Add to Favorites"
+                        getString(R.string.add_favorite)
 
                 } else {
 
                     favoriteBtn.text =
-                        "❤️ Remove Favorite"
+                        getString(R.string.remove_favorite)
                 }
             }
     }
@@ -747,7 +890,10 @@ class DoctorDetailsActivity : AppCompatActivity() {
 
                     Toast.makeText(
                         this,
-                        "Selected: $slot",
+                        getString(
+                            R.string.selected_slot,
+                            slot
+                        ),
                         Toast.LENGTH_SHORT
                     ).show()
                 }
@@ -766,7 +912,9 @@ class DoctorDetailsActivity : AppCompatActivity() {
 
             val channel = NotificationChannel(
                 channelId,
-                "MedBook Notifications",
+                getString(
+                    R.string.medbook_notifications
+                ),
                 NotificationManager.IMPORTANCE_DEFAULT
             )
 
@@ -791,11 +939,14 @@ class DoctorDetailsActivity : AppCompatActivity() {
                 )
 
                 .setContentTitle(
-                    "Appointment Confirmed"
+                    getString(R.string.appointment_confirmed)
                 )
 
                 .setContentText(
-                    "Your appointment with $doctorName has been booked successfully."
+                    getString(
+                        R.string.appointment_notification_text,
+                        doctorName
+                    )
                 )
 
                 .setPriority(

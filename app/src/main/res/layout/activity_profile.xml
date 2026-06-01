@@ -15,7 +15,7 @@
             android:id="@+id/profileTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="My Profile"
+            android:text="@string/my_profile"
             android:textSize="32sp"
             android:textStyle="bold"
             android:layout_marginBottom="16dp" />
@@ -32,17 +32,15 @@
             android:id="@+id/totalAppointmentsText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Total Appointments: 0"
+            android:text="@string/total_appointments"
             android:textSize="18sp"
             android:textStyle="bold"
             android:layout_marginBottom="24dp" />
 
-        <!-- FAVORITES -->
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Favorite Doctors"
+            android:text="@string/favorite_doctors"
             android:textSize="24sp"
             android:textStyle="bold"
             android:layout_marginTop="10dp"
@@ -54,12 +52,10 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" />
 
-        <!-- NOTIFICATIONS -->
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Notifications"
+            android:text="@string/notifications"
             android:textSize="24sp"
             android:textStyle="bold"
             android:layout_marginTop="30dp"
@@ -71,13 +67,11 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" />
 
-        <!-- LOGOUT -->
-
         <Button
             android:id="@+id/logoutBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Logout"
+            android:text="@string/logout"
             android:layout_marginTop="30dp" />
 
     </LinearLayout>

@@ -46,7 +46,7 @@ class LoginActivity : AppCompatActivity() {
 
                 Toast.makeText(
                     this,
-                    "Google Sign-In Failed",
+                    getString(R.string.google_signin_failed),
                     Toast.LENGTH_SHORT
                 ).show()
             }
@@ -137,7 +137,7 @@ class LoginActivity : AppCompatActivity() {
 
                             Toast.makeText(
                                 this,
-                                "Login successful",
+                                getString(R.string.login_successful),
                                 Toast.LENGTH_SHORT
                             ).show()
 
@@ -154,7 +154,7 @@ class LoginActivity : AppCompatActivity() {
 
                             Toast.makeText(
                                 this,
-                                "Authentication failed",
+                                getString(R.string.authentication_failed),
                                 Toast.LENGTH_SHORT
                             ).show()
                         }
@@ -164,7 +164,7 @@ class LoginActivity : AppCompatActivity() {
 
                 Toast.makeText(
                     this,
-                    "Enter email and password",
+                    getString(R.string.enter_email_password),
                     Toast.LENGTH_SHORT
                 ).show()
             }
@@ -181,7 +181,7 @@ class LoginActivity : AppCompatActivity() {
 
                         Toast.makeText(
                             this,
-                            "Anonymous Login Successful",
+                            getString(R.string.anonymous_login_successful),
                             Toast.LENGTH_SHORT
                         ).show()
 
@@ -198,7 +198,7 @@ class LoginActivity : AppCompatActivity() {
 
                         Toast.makeText(
                             this,
-                            "Anonymous Login Failed",
+                            getString(R.string.anonymous_login_failed),
                             Toast.LENGTH_SHORT
                         ).show()
                     }
@@ -262,7 +262,7 @@ class LoginActivity : AppCompatActivity() {
 
                     Toast.makeText(
                         this,
-                        "Google Login Successful",
+                        getString(R.string.google_login_successful),
                         Toast.LENGTH_SHORT
                     ).show()
 
@@ -279,7 +279,7 @@ class LoginActivity : AppCompatActivity() {
 
                     Toast.makeText(
                         this,
-                        "Google Authentication Failed",
+                        getString(R.string.google_authentication_failed),
                         Toast.LENGTH_SHORT
                     ).show()
                 }

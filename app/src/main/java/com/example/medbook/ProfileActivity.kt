@@ -71,7 +71,10 @@ class ProfileActivity : AppCompatActivity() {
             .addOnSuccessListener { documents ->
 
                 totalAppointmentsText.text =
-                    "Total Appointments: ${documents.size()}"
+                    getString(
+                        R.string.total_appointments_count,
+                        documents.size()
+                    )
             }
 
         // LOAD FAVORITES
