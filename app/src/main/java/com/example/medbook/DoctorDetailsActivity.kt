@@ -27,6 +27,13 @@ import androidx.core.app.NotificationManagerCompat
 import android.Manifest
 import android.content.pm.PackageManager
 import androidx.core.app.ActivityCompat
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
+
+import com.example.medbook.room.DatabaseProvider
+import com.example.medbook.room.entity.RecentDoctorEntity
+import com.example.medbook.room.entity.AppointmentHistoryEntity
+import com.example.medbook.room.entity.FavoriteDoctorEntity
 
 class DoctorDetailsActivity : AppCompatActivity() {
 
@@ -279,6 +286,25 @@ class DoctorDetailsActivity : AppCompatActivity() {
 
         doctorImage.setImageResource(image)
 
+        lifecycleScope.launch {
+
+            DatabaseProvider
+                .getDatabase(this@DoctorDetailsActivity)
+                .recentDoctorDao()
+                .insertRecentDoctor(
+
+                    RecentDoctorEntity(
+
+                        doctorName = name ?: "",
+
+                        specialization = specialization ?: "",
+
+                        viewedAt =
+                            System.currentTimeMillis()
+                    )
+                )
+        }
+
         checkFavoriteStatus(
             name,
             favoriteBtn
@@ -331,6 +357,37 @@ class DoctorDetailsActivity : AppCompatActivity() {
                             .add(favorite)
 
                             .addOnSuccessListener {
+
+                                lifecycleScope.launch {
+
+                                    DatabaseProvider
+                                        .getDatabase(this@DoctorDetailsActivity)
+                                        .favoriteDoctorDao()
+                                        .insertFavorite(
+
+                                            FavoriteDoctorEntity(
+
+                                                name = name ?: "",
+
+                                                specialization =
+                                                    specialization ?: "",
+
+                                                rating =
+                                                    rating ?: "",
+
+                                                experience =
+                                                    experience ?: "",
+
+                                                imageResId = image,
+
+                                                price =
+                                                    fee ?: "",
+
+                                                description =
+                                                    description ?: ""
+                                            )
+                                        )
+                                }
 
                                 val bundle = Bundle()
 
@@ -476,6 +533,29 @@ class DoctorDetailsActivity : AppCompatActivity() {
                     .add(appointment)
 
                     .addOnSuccessListener {
+
+                        lifecycleScope.launch {
+
+                            DatabaseProvider
+                                .getDatabase(this@DoctorDetailsActivity)
+                                .appointmentHistoryDao()
+                                .insertAppointment(
+
+                                    AppointmentHistoryEntity(
+
+                                        doctorName = name ?: "",
+
+                                        appointmentDate = selectedDate,
+
+                                        appointmentTime = selectedSlot,
+
+                                        status = "BOOKED",
+
+                                        createdAt =
+                                            System.currentTimeMillis()
+                                    )
+                                )
+                        }
 
                         val bundle = Bundle()
 
