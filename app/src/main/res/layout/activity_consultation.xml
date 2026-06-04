@@ -5,17 +5,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#F5F5F5"
+    android:background="@color/background"
     android:padding="16dp">
 
-    <TextView
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/online_consultation"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="20dp" />
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="20dp">
+
+        <TextView
+            android:id="@+id/backBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="←"
+            android:textColor="@color/primary"
+            android:textSize="32sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/online_consultation"
+            android:textColor="@color/primary"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:layout_marginStart="12dp" />
+
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/doctorVideoImage"
@@ -74,6 +92,8 @@
             android:id="@+id/micBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/rounded_button"
+            android:textColor="@android:color/white"
             android:text="@string/mic" />
 
         <Button
@@ -81,6 +101,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/camera"
+            android:background="@drawable/rounded_button"
+            android:textColor="@android:color/white"
             android:layout_marginStart="16dp" />
 
     </LinearLayout>
@@ -90,6 +112,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/end_consultation"
+        android:backgroundTint="@android:color/holo_red_dark"
+        android:textColor="@android:color/white"
         android:layout_marginTop="40dp" />
 
 </LinearLayout>

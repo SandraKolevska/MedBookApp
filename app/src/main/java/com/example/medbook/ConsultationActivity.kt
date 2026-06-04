@@ -55,12 +55,12 @@ class ConsultationActivity : AppCompatActivity() {
             R.layout.activity_consultation
         )
 
-        supportActionBar?.title =
-            "Online Consultation"
+        val backBtn =
+            findViewById<TextView>(R.id.backBtn)
 
-        supportActionBar?.setDisplayHomeAsUpEnabled(
-            true
-        )
+        backBtn.setOnClickListener {
+            finish()
+        }
 
         timerText =
             findViewById(R.id.callTimer)
@@ -146,8 +146,4 @@ class ConsultationActivity : AppCompatActivity() {
         )
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        finish()
-        return true
-    }
 }

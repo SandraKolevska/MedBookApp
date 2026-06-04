@@ -37,6 +37,12 @@ class ProfileActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_profile)
 
+        val backBtn = findViewById<TextView>(R.id.backBtn)
+
+        backBtn.setOnClickListener {
+            finish()
+        }
+
         firestore = FirebaseFirestore.getInstance()
 
         val userEmailText =

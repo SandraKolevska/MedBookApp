@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import android.widget.TextView
 
 class FavoritesActivity : AppCompatActivity() {
 
@@ -31,6 +32,13 @@ class FavoritesActivity : AppCompatActivity() {
         setContentView(
             R.layout.activity_favorites
         )
+
+        val backBtn =
+            findViewById<TextView>(R.id.backBtn)
+
+        backBtn.setOnClickListener {
+            finish()
+        }
 
         supportActionBar?.title =
             getString(R.string.my_favorites)

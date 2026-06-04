@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:padding="16dp"
     android:layout_margin="10dp"
-    android:background="#FFFFFF">
+    android:background="@drawable/appointment_card">
 
     <TextView
         android:id="@+id/appointmentDoctorName"
@@ -43,6 +43,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/cancel_appointment"
+        android:background="@drawable/rounded_input"
+        android:textColor="@color/primary"
+        android:textStyle="bold"
         android:layout_marginTop="12dp" />
 
 </LinearLayout>

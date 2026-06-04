@@ -142,5 +142,6 @@
     <string name="please_login_first">
     Please login first
 </string>
+    <string name="doctor_details">Doctor Details</string>
 
 </resources>

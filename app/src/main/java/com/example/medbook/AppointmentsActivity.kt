@@ -62,6 +62,13 @@ class AppointmentsActivity : AppCompatActivity() {
             R.layout.activity_appointments
         )
 
+        val backBtn =
+            findViewById<TextView>(R.id.backBtn)
+
+        backBtn.setOnClickListener {
+            finish()
+        }
+
         supportActionBar?.title =
             getString(R.string.appointments_title)
 
@@ -146,8 +153,8 @@ class AppointmentsActivity : AppCompatActivity() {
                         40
                     )
 
-                    appointmentCard.setBackgroundColor(
-                        Color.WHITE
+                    appointmentCard.setBackgroundResource(
+                        R.drawable.appointment_card
                     )
 
                     val params =
@@ -165,6 +172,7 @@ class AppointmentsActivity : AppCompatActivity() {
 
                     appointmentCard.layoutParams =
                         params
+                    appointmentCard.elevation = 10f
 
                     val doctorText =
                         TextView(this)
@@ -172,7 +180,7 @@ class AppointmentsActivity : AppCompatActivity() {
                     doctorText.text =
                         doctorName
 
-                    doctorText.textSize = 22f
+                    doctorText.textSize = 24f
 
                     doctorText.setTypeface(
                         null,
@@ -190,7 +198,7 @@ class AppointmentsActivity : AppCompatActivity() {
                     specializationText.textSize = 18f
 
                     specializationText.setTextColor(
-                        Color.GRAY
+                        Color.parseColor("#64748B")
                     )
 
                     val dateText =
@@ -222,6 +230,14 @@ class AppointmentsActivity : AppCompatActivity() {
                     joinBtn.text =
                         getString(R.string.join_consultation)
 
+                    joinBtn.setBackgroundResource(
+                        R.drawable.rounded_button
+                    )
+
+                    joinBtn.setTextColor(
+                        Color.WHITE
+                    )
+
                     joinBtn.setOnClickListener {
 
                         startActivity(
@@ -237,6 +253,14 @@ class AppointmentsActivity : AppCompatActivity() {
 
                     cancelBtn.text =
                         getString(R.string.cancel_appointment)
+
+                    cancelBtn.setBackgroundResource(
+                        R.drawable.rounded_input
+                    )
+
+                    cancelBtn.setTextColor(
+                        Color.parseColor("#14B8A6")
+                    )
 
                     cancelBtn.setPadding(
                         0,
@@ -301,6 +325,21 @@ class AppointmentsActivity : AppCompatActivity() {
                     appointmentCard.addView(
                         slotText
                     )
+
+                    val joinParams =
+                        LinearLayout.LayoutParams(
+                            LinearLayout.LayoutParams.MATCH_PARENT,
+                            LinearLayout.LayoutParams.WRAP_CONTENT
+                        )
+
+                    joinParams.setMargins(
+                        0,
+                        20,
+                        0,
+                        12
+                    )
+
+                    joinBtn.layoutParams = joinParams
 
                     appointmentCard.addView(
                         joinBtn

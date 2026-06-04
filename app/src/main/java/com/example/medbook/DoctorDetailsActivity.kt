@@ -182,9 +182,15 @@ class DoctorDetailsActivity : AppCompatActivity() {
             }
         }
 
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         setContentView(R.layout.activity_doctor_details)
+
+        val backBtn =
+            findViewById<TextView>(R.id.backBtn)
+
+        backBtn.setOnClickListener {
+            finish()
+        }
 
         firestore = FirebaseFirestore.getInstance()
 
