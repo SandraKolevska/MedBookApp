@@ -40,7 +40,7 @@
 
     <string name="available_time_slots">Достапни термини</string>
 
-    <string name="book_appointment">Закажи термин</string>
+    <string name="book_appointment">Продолжи кон плаќање</string>
 
     <string name="reviews">Прегледи</string>
     <string name="write_review">Напиши мислење...</string>
@@ -145,5 +145,47 @@
     Најавете се прво
 </string>
     <string name="doctor_details">Детали за доктор</string>
+    <string name="payment">Плаќање</string>
+    <string name="card_holder_name">Име на сопственик</string>
+    <string name="card_number">Број на картичка</string>
+    <string name="pay">Плати</string>
+
+    <string name="doctor_label">Доктор</string>
+    <string name="date_label">Датум</string>
+    <string name="time_label">Време</string>
+    <string name="price_label">Цена</string>
+
+    <string name="fill_all_fields">
+    Пополнете ги сите полиња
+</string>
+
+    <string name="payment_successful">
+    Плаќањето е успешно
+</string>
+
+    <string name="appointment_booked_successfully">
+    Вашиот термин е успешно закажан.
+</string>
+    <string name="invalid_card_number">
+    Бројот на картичката мора да содржи 16 цифри
+</string>
+
+    <string name="invalid_cvv">
+    CVV кодот мора да содржи 3 цифри
+</string>
+
+    <string name="invalid_expiry">
+    Датумот мора да биде во формат MM/YY
+</string>
+    <string name="appointment_history_closed">
+    📅 Историја на термини ▼
+</string>
+
+    <string name="appointment_history_open">
+    📅 Историја на термини ▲
+</string>
+    <string name="no_appointment_history">
+    Нема историја на термини
+</string>
 
 </resources>

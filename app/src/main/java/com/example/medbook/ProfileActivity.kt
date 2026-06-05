@@ -9,6 +9,9 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class ProfileActivity : AppCompatActivity() {
 
@@ -56,6 +59,9 @@ class ProfileActivity : AppCompatActivity() {
 
         val notificationsContainer =
             findViewById<LinearLayout>(R.id.notificationsContainer)
+
+        val historyTitle =
+            findViewById<TextView>(R.id.historyTitle)
 
         val logoutBtn =
             findViewById<Button>(R.id.logoutBtn)
@@ -156,8 +162,9 @@ class ProfileActivity : AppCompatActivity() {
                 }
             }
 
-        // LOAD NOTIFICATIONS
-        firestore.collection("notifications")
+        // LOAD APPOINTMENT HISTORY
+
+        firestore.collection("appointments")
             .whereEqualTo(
                 "userId",
                 currentUser?.uid
@@ -168,25 +175,58 @@ class ProfileActivity : AppCompatActivity() {
 
                 notificationsContainer.removeAllViews()
 
+                var hasHistory = false
+
                 for (document in documents) {
 
-                    val message =
-                        document.getString("message")
+                    val date =
+                        document.getString(
+                            "date"
+                        ) ?: continue
 
-                    val notificationCard =
+                    val formatter =
+                        SimpleDateFormat(
+                            "d/M/yyyy",
+                            Locale.getDefault()
+                        )
+
+                    val appointmentDate =
+                        formatter.parse(date)
+
+                    val today =
+                        formatter.parse(
+                            formatter.format(Date())
+                        )
+
+                    if (
+                        appointmentDate == null ||
+                        !appointmentDate.before(today)
+                    ) {
+                        continue
+                    }
+
+                    val doctorName =
+                        document.getString("doctorName")
+
+
+
+                    val slot =
+                        document.getString("slot")
+
+                    val historyCard =
                         LinearLayout(this)
 
-                    notificationCard.orientation =
+                    historyCard.orientation =
                         LinearLayout.VERTICAL
 
-                    notificationCard.setPadding(
-                        32,
-                        32,
-                        32,
-                        32
+                    historyCard.setPadding(
+                        40,
+                        40,
+                        40,
+                        40
                     )
 
-                    notificationCard.setBackgroundColor(
+                    historyCard.setBackgroundColor(
                         Color.WHITE
                     )
 
@@ -203,26 +243,100 @@ class ProfileActivity : AppCompatActivity() {
                         24
                     )
 
-                    notificationCard.layoutParams =
+                    historyCard.layoutParams =
                         params
 
-                    val messageText =
+                    val doctorText =
                         TextView(this)
 
-                    messageText.text =
-                        message
+                    doctorText.text =
+                        doctorName
 
-                    messageText.textSize = 18f
+                    doctorText.textSize = 20f
 
-                    notificationCard.addView(
-                        messageText
+                    doctorText.setTypeface(
+                        null,
+                        android.graphics.Typeface.BOLD
+                    )
+
+                    val dateText =
+                        TextView(this)
+
+                    dateText.text =
+                        "📅 $date"
+
+                    dateText.textSize = 18f
+
+                    val slotText =
+                        TextView(this)
+
+                    slotText.text =
+                        "🕒 $slot"
+
+                    slotText.textSize = 18f
+
+                    historyCard.addView(
+                        doctorText
+                    )
+
+                    historyCard.addView(
+                        dateText
+                    )
+
+                    historyCard.addView(
+                        slotText
                     )
 
                     notificationsContainer.addView(
-                        notificationCard
+                        historyCard
+                    )
+                    hasHistory = true
+                }
+                if (!hasHistory) {
+
+                    val emptyText =
+                        TextView(this)
+
+                    emptyText.text =
+                        getString(
+                            R.string.no_appointment_history
+                        )
+
+                    emptyText.textSize = 18f
+
+                    notificationsContainer.addView(
+                        emptyText
                     )
                 }
             }
+
+        var historyExpanded = false
+
+        historyTitle.setOnClickListener {
+
+            historyExpanded = !historyExpanded
+
+            if (historyExpanded) {
+
+                notificationsContainer.visibility =
+                    android.view.View.VISIBLE
+
+                historyTitle.text =
+                    getString(
+                        R.string.appointment_history_open
+                    )
+
+            } else {
+
+                notificationsContainer.visibility =
+                    android.view.View.GONE
+
+                historyTitle.text =
+                    getString(
+                        R.string.appointment_history_closed
+                    )
+            }
+        }
 
         logoutBtn.setOnClickListener {
 

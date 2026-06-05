@@ -11,6 +11,9 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class AppointmentsActivity : AppCompatActivity() {
 
@@ -120,6 +123,32 @@ class AppointmentsActivity : AppCompatActivity() {
 
                 for (document in documents) {
 
+                    val date =
+                        document.getString(
+                            "date"
+                        ) ?: continue
+
+                    val formatter =
+                        SimpleDateFormat(
+                            "d/M/yyyy",
+                            Locale.getDefault()
+                        )
+
+                    val appointmentDate =
+                        formatter.parse(date)
+
+                    val today =
+                        formatter.parse(
+                            formatter.format(Date())
+                        )
+
+                    if (
+                        appointmentDate == null ||
+                        appointmentDate.before(today)
+                    ) {
+                        continue
+                    }
+
                     val doctorName =
                         document.getString(
                             "doctorName"
@@ -128,11 +157,6 @@ class AppointmentsActivity : AppCompatActivity() {
                     val specialization =
                         document.getString(
                             "specialization"
-                        )
-
-                    val date =
-                        document.getString(
-                            "date"
                         )
 
                     val slot =

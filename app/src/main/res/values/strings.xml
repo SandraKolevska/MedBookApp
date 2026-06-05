@@ -45,7 +45,7 @@
 
     <string name="available_time_slots">Available Time Slots</string>
 
-    <string name="book_appointment">Book Appointment</string>
+    <string name="book_appointment">Continue to Payment</string>
 
     <string name="reviews">Reviews</string>
     <string name="write_review">Write review...</string>
@@ -143,5 +143,45 @@
     Please login first
 </string>
     <string name="doctor_details">Doctor Details</string>
+    <string name="payment">Payment</string>
+    <string name="card_holder_name">Card Holder Name</string>
+    <string name="card_number">Card Number</string>
+    <string name="pay">Pay</string>
+
+    <string name="doctor_label">Doctor</string>
+    <string name="date_label">Date</string>
+    <string name="time_label">Time</string>
+    <string name="price_label">Price</string>
+
+    <string name="fill_all_fields">Please fill all fields</string>
+
+    <string name="payment_successful">
+    Payment Successful
+</string>
+
+    <string name="appointment_booked_successfully">
+    Your appointment has been booked successfully.
+</string>
+    <string name="invalid_card_number">
+    Card number must contain 16 digits
+</string>
+
+    <string name="invalid_cvv">
+    CVV must contain 3 digits
+</string>
+
+    <string name="invalid_expiry">
+    Expiry date must be in MM/YY format
+</string>
+    <string name="appointment_history_closed">
+    📅 Appointment History ▼
+</string>
+
+    <string name="appointment_history_open">
+    📅 Appointment History ▲
+</string>
+    <string name="no_appointment_history">
+    No appointment history
+</string>
 
 </resources>

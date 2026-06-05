@@ -226,6 +226,11 @@ class DoctorDetailsActivity : AppCompatActivity() {
         val slotsContainer =
             findViewById<GridLayout>(R.id.slotsContainer)
 
+        val availableSlotsTitle =
+            findViewById<TextView>(
+                R.id.availableSlotsTitle
+            )
+
         val bookAppointmentBtn =
             findViewById<Button>(R.id.bookAppointmentBtn)
 
@@ -289,6 +294,9 @@ class DoctorDetailsActivity : AppCompatActivity() {
             translateDescription(
                 description
             )
+
+        doctorFee.text =
+            fee
 
         doctorImage.setImageResource(image)
 
@@ -491,6 +499,12 @@ class DoctorDetailsActivity : AppCompatActivity() {
                             selectedDate
                         )
 
+                    availableSlotsTitle.visibility =
+                        android.view.View.VISIBLE
+
+                    slotsContainer.visibility =
+                        android.view.View.VISIBLE
+
                     loadSlots(
                         slotsContainer,
                         name
@@ -505,7 +519,7 @@ class DoctorDetailsActivity : AppCompatActivity() {
         }
 
         // BOOK APPOINTMENT
-        bookAppointmentBtn.setOnClickListener {
+        /*bookAppointmentBtn.setOnClickListener {
 
             if (
                 auth.currentUser == null ||
@@ -656,6 +670,70 @@ class DoctorDetailsActivity : AppCompatActivity() {
                     Toast.LENGTH_SHORT
                 ).show()
             }
+            }*/
+
+        bookAppointmentBtn.setOnClickListener {
+
+            if (
+                auth.currentUser == null ||
+                auth.currentUser!!.isAnonymous
+            ) {
+
+                Toast.makeText(
+                    this,
+                    getString(R.string.login_to_book),
+                    Toast.LENGTH_LONG
+                ).show()
+
+                return@setOnClickListener
+            }
+
+            if (
+                selectedDate.isEmpty() ||
+                selectedSlot.isEmpty()
+            ) {
+
+                Toast.makeText(
+                    this,
+                    getString(R.string.select_date_time),
+                    Toast.LENGTH_SHORT
+                ).show()
+
+                return@setOnClickListener
+            }
+
+            val intent =
+                Intent(
+                    this,
+                    PaymentActivity::class.java
+                )
+
+            intent.putExtra(
+                "doctorName",
+                name
+            )
+
+            intent.putExtra(
+                "appointmentDate",
+                selectedDate
+            )
+
+            intent.putExtra(
+                "appointmentSlot",
+                selectedSlot
+            )
+
+            intent.putExtra(
+                "doctorPrice",
+                fee
+            )
+
+            intent.putExtra(
+                "doctorSpecialization",
+                specialization
+            )
+
+            startActivity(intent)
         }
 
         // SUBMIT REVIEW
@@ -954,6 +1032,7 @@ class DoctorDetailsActivity : AppCompatActivity() {
 
                 .addOnSuccessListener { documents ->
 
+
                     if (!documents.isEmpty) {
 
                         slotButton.isEnabled = false
@@ -973,6 +1052,11 @@ class DoctorDetailsActivity : AppCompatActivity() {
                 if (slotButton.isEnabled) {
 
                     selectedSlot = slot
+
+                    findViewById<Button>(
+                        R.id.bookAppointmentBtn
+                    ).visibility =
+                        android.view.View.VISIBLE
 
                     Toast.makeText(
                         this,

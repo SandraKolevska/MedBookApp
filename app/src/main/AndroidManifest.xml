@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-    <uses-permission
-        android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
         android:allowBackup="true"
@@ -10,62 +10,47 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MedBook">
-
+        <activity
+            android:name=".PaymentActivity"
+            android:exported="false" />
         <activity
             android:name=".ConsultationActivity"
             android:exported="false" />
-
         <activity
             android:name=".FavoritesActivity"
             android:exported="false" />
-
         <activity
             android:name=".AppointmentsActivity"
             android:exported="false" />
-
         <activity
             android:name=".ProfileActivity"
             android:exported="false" />
-
         <activity
             android:name=".DoctorDetailsActivity"
             android:exported="false" />
-
         <activity
             android:name=".RegisterActivity"
-            android:exported="false" />
-
-        <!-- LOGIN SCREEN -->
+            android:exported="false" /> <!-- LOGIN SCREEN -->
         <activity
             android:name=".LoginActivity"
             android:exported="true">
-
             <intent-filter>
-
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-
             </intent-filter>
-
-        </activity>
-
-        <!-- HOME SCREEN -->
+        </activity> <!-- HOME SCREEN -->
         <service
             android:name=".MyFirebaseMessagingService"
             android:exported="false">
-
             <intent-filter>
-                <action
-                    android:name="com.google.firebase.MESSAGING_EVENT" />
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
-
         </service>
 
         <activity
             android:name=".MainActivity"
             android:exported="false" />
-
     </application>
 
 </manifest>
