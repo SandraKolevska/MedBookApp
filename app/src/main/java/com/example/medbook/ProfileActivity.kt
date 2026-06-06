@@ -13,8 +13,17 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 import android.net.Uri
+import android.provider.MediaStore
+import android.graphics.Bitmap
+import android.widget.ImageView
+import android.Manifest
+import android.content.pm.PackageManager
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 
 class ProfileActivity : AppCompatActivity() {
+    private val CAMERA_REQUEST_CODE = 100
+    private val CAMERA_PERMISSION_CODE = 101
 
     private lateinit var auth: FirebaseAuth
 
@@ -71,6 +80,17 @@ class ProfileActivity : AppCompatActivity() {
 
         val logoutBtn =
             findViewById<Button>(R.id.logoutBtn)
+
+        val profileImage =
+            findViewById<android.widget.ImageView>(
+                R.id.profileImage
+            )
+
+        val changePhotoBtn =
+            findViewById<Button>(
+                R.id.changePhotoBtn
+            )
+        loadImageFromPreferences()
 
         val currentUser =
             auth.currentUser
@@ -343,6 +363,36 @@ class ProfileActivity : AppCompatActivity() {
                     )
             }
         }
+        changePhotoBtn.setOnClickListener {
+
+            if (
+                ContextCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.CAMERA
+                ) == PackageManager.PERMISSION_GRANTED
+            ) {
+
+                val cameraIntent =
+                    Intent(
+                        MediaStore.ACTION_IMAGE_CAPTURE
+                    )
+
+                startActivityForResult(
+                    cameraIntent,
+                    CAMERA_REQUEST_CODE
+                )
+
+            } else {
+
+                ActivityCompat.requestPermissions(
+                    this,
+                    arrayOf(
+                        Manifest.permission.CAMERA
+                    ),
+                    CAMERA_PERMISSION_CODE
+                )
+            }
+        }
 
         findClinicsBtn.setOnClickListener {
 
@@ -378,8 +428,147 @@ class ProfileActivity : AppCompatActivity() {
         }
     }
 
+    private fun saveImageToPreferences(
+        bitmap: Bitmap
+    ) {
+
+        val stream =
+            java.io.ByteArrayOutputStream()
+
+        bitmap.compress(
+            Bitmap.CompressFormat.PNG,
+            100,
+            stream
+        )
+
+        val bytes =
+            stream.toByteArray()
+
+        val encodedImage =
+            android.util.Base64.encodeToString(
+                bytes,
+                android.util.Base64.DEFAULT
+            )
+
+        val prefs =
+            getSharedPreferences(
+                "profile_prefs",
+                MODE_PRIVATE
+            )
+
+        prefs.edit()
+            .putString(
+                "profile_image",
+                encodedImage
+            )
+            .apply()
+    }
+
+    private fun loadImageFromPreferences() {
+
+        val prefs =
+            getSharedPreferences(
+                "profile_prefs",
+                MODE_PRIVATE
+            )
+
+        val encodedImage =
+            prefs.getString(
+                "profile_image",
+                null
+            )
+
+        if (encodedImage != null) {
+
+            val bytes =
+                android.util.Base64.decode(
+                    encodedImage,
+                    android.util.Base64.DEFAULT
+                )
+
+            val bitmap =
+                android.graphics.BitmapFactory.decodeByteArray(
+                    bytes,
+                    0,
+                    bytes.size
+                )
+
+            val profileImage =
+                findViewById<ImageView>(
+                    R.id.profileImage
+                )
+
+            profileImage.setImageBitmap(
+                bitmap
+            )
+        }
+    }
+
     override fun onSupportNavigateUp(): Boolean {
         finish()
         return true
+    }
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+
+        super.onRequestPermissionsResult(
+            requestCode,
+            permissions,
+            grantResults
+        )
+
+        if (
+            requestCode == CAMERA_PERMISSION_CODE &&
+            grantResults.isNotEmpty() &&
+            grantResults[0] == PackageManager.PERMISSION_GRANTED
+        ) {
+
+            val cameraIntent =
+                Intent(
+                    MediaStore.ACTION_IMAGE_CAPTURE
+                )
+
+            startActivityForResult(
+                cameraIntent,
+                CAMERA_REQUEST_CODE
+            )
+        }
+    }
+    override fun onActivityResult(
+        requestCode: Int,
+        resultCode: Int,
+        data: Intent?
+    ) {
+
+        super.onActivityResult(
+            requestCode,
+            resultCode,
+            data
+        )
+
+        if (
+            requestCode == CAMERA_REQUEST_CODE &&
+            resultCode == RESULT_OK
+        ) {
+
+            val imageBitmap =
+                data?.extras?.get("data") as Bitmap
+
+            val profileImage =
+                findViewById<ImageView>(
+                    R.id.profileImage
+                )
+
+            profileImage.setImageBitmap(
+                imageBitmap
+            )
+
+            saveImageToPreferences(
+                imageBitmap
+            )
+        }
     }
 }

@@ -209,5 +209,8 @@
     <string name="camera_off">
     📷 Исклучена камера
 </string>
+    <string name="change_profile_photo">
+    Промени профилна слика
+</string>
 
 </resources>

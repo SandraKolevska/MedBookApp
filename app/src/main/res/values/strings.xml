@@ -205,5 +205,8 @@
     <string name="camera_off">
     📷 Camera Off
 </string>
+    <string name="change_profile_photo">
+    Change Profile Photo
+</string>
 
 </resources>
