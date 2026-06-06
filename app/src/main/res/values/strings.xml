@@ -47,7 +47,7 @@
 
     <string name="book_appointment">Continue to Payment</string>
 
-    <string name="reviews">Reviews</string>
+    <string name="reviews">Ratings and Reviews</string>
     <string name="write_review">Write review...</string>
     <string name="submit_review">Submit Review</string>
     <string name="login_with_account">Please login with an account</string>
@@ -74,8 +74,6 @@
     <string name="my_appointments">My Appointments</string>
     <string name="online_consultation">Online Consultation</string>
     <string name="consultation_progress">Consultation in progress...</string>
-    <string name="mic">🎤 Mic</string>
-    <string name="camera">📷 Camera</string>
     <string name="end_consultation">End Consultation</string>
     <string name="cancel_appointment">Cancel Appointment</string>
     <string name="total_appointments_count">
@@ -182,6 +180,30 @@
 </string>
     <string name="no_appointment_history">
     No appointment history
+</string>
+    <string name="find_nearby_clinics">
+    📍 Find Nearby Hospitals
+</string>
+    <string name="find_trusted_doctors">
+    Find Trusted Doctors
+</string>
+
+    <string name="book_appointments_easily">
+    Book Appointments Easily
+</string>
+
+    <string name="or_text">
+    OR
+</string>
+    <string name="mic">🎤 Microphone</string>
+
+    <string name="camera">📷 Camera</string>
+    <string name="muted">
+    🔇 Muted
+</string>
+
+    <string name="camera_off">
+    📷 Camera Off
 </string>
 
 </resources>

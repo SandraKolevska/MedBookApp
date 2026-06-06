@@ -42,7 +42,7 @@
 
     <string name="book_appointment">Продолжи кон плаќање</string>
 
-    <string name="reviews">Прегледи</string>
+    <string name="reviews">Оцени и мислења</string>
     <string name="write_review">Напиши мислење...</string>
     <string name="submit_review">Испрати мислење</string>
     <string name="login_with_account">Најавете се со профил</string>
@@ -69,8 +69,6 @@
     <string name="my_appointments">Мои Термини</string>
     <string name="online_consultation">Онлајн Консултација</string>
     <string name="consultation_progress">Консултацијата е во тек...</string>
-    <string name="mic">🎤 Микрофон</string>
-    <string name="camera">📷 Камера</string>
     <string name="end_consultation">Заврши Консултација</string>
     <string name="cancel_appointment">Откажи Термин</string>
     <string name="total_appointments_count">
@@ -186,6 +184,30 @@
 </string>
     <string name="no_appointment_history">
     Нема историја на термини
+</string>
+    <string name="find_nearby_clinics">
+    📍 Пронајди блиски болници
+</string>
+    <string name="find_trusted_doctors">
+    Најдете доверливи доктори
+</string>
+
+    <string name="book_appointments_easily">
+    Закажете термин лесно
+</string>
+
+    <string name="or_text">
+    ИЛИ
+</string>
+    <string name="mic">🎤 Микрофон</string>
+
+    <string name="camera">📷 Камера</string>
+    <string name="muted">
+    🔇 Исклучен звук
+</string>
+
+    <string name="camera_off">
+    📷 Исклучена камера
 </string>
 
 </resources>

@@ -6,6 +6,7 @@ import android.os.Looper
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import android.widget.ImageView
 
 class ConsultationActivity : AppCompatActivity() {
 
@@ -69,6 +70,10 @@ class ConsultationActivity : AppCompatActivity() {
             findViewById<TextView>(
                 R.id.doctorNameText
             )
+        val doctorImageView =
+            findViewById<ImageView>(
+                R.id.doctorVideoImage
+            )
 
         val doctorSpecializationText =
             findViewById<TextView>(
@@ -90,11 +95,32 @@ class ConsultationActivity : AppCompatActivity() {
                 R.id.endCallBtn
             )
 
+        val doctorName =
+            intent.getStringExtra(
+                "doctorName"
+            )
+
+        val doctorSpecialization =
+            intent.getStringExtra(
+                "doctorSpecialization"
+            )
+        val doctorImage =
+            intent.getIntExtra(
+                "doctorImage",
+                R.drawable.doctor2
+            )
+
         doctorNameText.text =
-            "Dr. Sarah Johnson"
+            doctorName
 
         doctorSpecializationText.text =
-            "Cardiologist"
+            translateSpecialization(
+                doctorSpecialization
+            )
+
+        doctorImageView.setImageResource(
+            doctorImage
+        )
 
         micBtn.setOnClickListener {
 
@@ -103,12 +129,16 @@ class ConsultationActivity : AppCompatActivity() {
             if (isMicOn) {
 
                 micBtn.text =
-                    "🎤 Mic"
+                    getString(
+                        R.string.mic
+                    )
 
             } else {
 
                 micBtn.text =
-                    "🔇 Muted"
+                    getString(
+                        R.string.muted
+                    )
             }
         }
 
@@ -119,12 +149,16 @@ class ConsultationActivity : AppCompatActivity() {
             if (isCameraOn) {
 
                 cameraBtn.text =
-                    "📷 Camera"
+                    getString(
+                        R.string.camera
+                    )
 
             } else {
 
                 cameraBtn.text =
-                    "🚫 Camera Off"
+                    getString(
+                        R.string.camera_off
+                    )
             }
         }
 
@@ -137,7 +171,37 @@ class ConsultationActivity : AppCompatActivity() {
             timerRunnable
         )
     }
+    private fun translateSpecialization(
+        specialization: String?
+    ): String {
 
+        val isMk =
+            resources.configuration
+                .locales[0]
+                .language == "mk"
+
+        if (!isMk) {
+            return specialization ?: ""
+        }
+
+        return when (specialization) {
+
+            "Cardiologist" -> "Кардиолог"
+            "Dentist" -> "Стоматолог"
+            "Pediatrician" -> "Педијатар"
+            "Neurologist" -> "Невролог"
+            "Dermatologist" -> "Дерматолог"
+            "Orthopedic" -> "Ортопед"
+            "Gynecologist" -> "Гинеколог"
+            "Psychiatrist" -> "Психијатар"
+            "Ophthalmologist" -> "Офталмолог"
+            "ENT Specialist" -> "ОРЛ Специјалист"
+            "Radiologist" -> "Радиолог"
+            "General Surgeon" -> "Општ Хирург"
+
+            else -> specialization ?: ""
+        }
+    }
     override fun onDestroy() {
         super.onDestroy()
 

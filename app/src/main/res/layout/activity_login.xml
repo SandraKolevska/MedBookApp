@@ -54,7 +54,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Find Trusted Doctors"
+                android:text="@string/find_trusted_doctors"
                 android:textColor="@color/black"
                 android:textSize="22sp"
                 android:textStyle="bold"
@@ -63,7 +63,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Book Appointments Easily"
+                android:text="@string/book_appointments_easily"
                 android:textColor="@color/text_secondary"
                 android:textSize="16sp"
                 android:layout_marginBottom="40dp"/>
@@ -99,7 +99,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="OR"
+                android:text="@string/or_text"
                 android:textColor="@color/text_secondary"
                 android:layout_marginTop="18dp"
                 android:layout_marginBottom="18dp"/>

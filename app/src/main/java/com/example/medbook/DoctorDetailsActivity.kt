@@ -298,6 +298,9 @@ class DoctorDetailsActivity : AppCompatActivity() {
         doctorFee.text =
             fee
 
+        doctorRating.text =
+            "$rating (${getReviewCount(name)})"
+
         doctorImage.setImageResource(image)
 
         lifecycleScope.launch {
@@ -1133,7 +1136,39 @@ class DoctorDetailsActivity : AppCompatActivity() {
             builder.build()
         )
     }
+    private fun getReviewCount(
+        doctorName: String?
+    ): Int {
 
+        return when (doctorName) {
+
+            "Dr. Sarah Johnson" -> 125
+
+            "Dr. Michael Smith" -> 98
+
+            "Dr. Emily Brown" -> 76
+
+            "Dr. David Wilson" -> 143
+
+            "Dr. Christopher Taylor" -> 110
+
+            "Dr. James Anderson" -> 89
+
+            "Dr. Alexander Martinez" -> 132
+
+            "Dr. Emma Thomas" -> 61
+
+            "Dr. Robert White" -> 104
+
+            "Dr. Sophia Harris" -> 73
+
+            "Dr. David Clark" -> 147
+
+            "Dr. Benjamin Lewis" -> 189
+
+            else -> 50
+        }
+    }
     override fun onSupportNavigateUp(): Boolean {
         finish()
         return true

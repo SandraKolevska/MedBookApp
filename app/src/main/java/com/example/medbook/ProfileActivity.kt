@@ -12,6 +12,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
+import android.net.Uri
 
 class ProfileActivity : AppCompatActivity() {
 
@@ -62,6 +63,11 @@ class ProfileActivity : AppCompatActivity() {
 
         val historyTitle =
             findViewById<TextView>(R.id.historyTitle)
+
+        val findClinicsBtn =
+            findViewById<Button>(
+                R.id.findClinicsBtn
+            )
 
         val logoutBtn =
             findViewById<Button>(R.id.logoutBtn)
@@ -336,6 +342,28 @@ class ProfileActivity : AppCompatActivity() {
                         R.string.appointment_history_closed
                     )
             }
+        }
+
+        findClinicsBtn.setOnClickListener {
+
+            val gmmIntentUri =
+                Uri.parse(
+                    "geo:0,0?q=hospitals"
+                )
+
+            val mapIntent =
+                Intent(
+                    Intent.ACTION_VIEW,
+                    gmmIntentUri
+                )
+
+            mapIntent.setPackage(
+                "com.google.android.apps.maps"
+            )
+
+            startActivity(
+                mapIntent
+            )
         }
 
         logoutBtn.setOnClickListener {

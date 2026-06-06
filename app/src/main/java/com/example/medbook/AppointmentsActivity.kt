@@ -264,12 +264,30 @@ class AppointmentsActivity : AppCompatActivity() {
 
                     joinBtn.setOnClickListener {
 
-                        startActivity(
+                        val intent =
                             Intent(
                                 this,
                                 ConsultationActivity::class.java
                             )
+
+                        intent.putExtra(
+                            "doctorName",
+                            doctorName
                         )
+
+                        intent.putExtra(
+                            "doctorSpecialization",
+                            specialization
+                        )
+
+                        intent.putExtra(
+                            "doctorImage",
+                            getDoctorImage(
+                                doctorName
+                            )
+                        )
+
+                        startActivity(intent)
                     }
 
                     val cancelBtn =
@@ -379,7 +397,52 @@ class AppointmentsActivity : AppCompatActivity() {
                 }
             }
     }
+    private fun getDoctorImage(
+        doctorName: String?
+    ): Int {
 
+        return when (doctorName) {
+
+            "Dr. Sarah Johnson" ->
+                R.drawable.doctor2
+
+            "Dr. Michael Smith" ->
+                R.drawable.doctor3
+
+            "Dr. Emily Brown" ->
+                R.drawable.doctor4
+
+            "Dr. David Wilson" ->
+                R.drawable.doctor5
+
+            "Dr. Christopher Taylor" ->
+                R.drawable.doctor6
+
+            "Dr. James Anderson" ->
+                R.drawable.doctor7
+
+            "Dr. Alexander Martinez" ->
+                R.drawable.doctor8
+
+            "Dr. Emma Thomas" ->
+                R.drawable.doctor9
+
+            "Dr. Robert White" ->
+                R.drawable.doctor10
+
+            "Dr. Sophia Harris" ->
+                R.drawable.doctor11
+
+            "Dr. David Clark" ->
+                R.drawable.doctor12
+
+            "Dr. Benjamin Lewis" ->
+                R.drawable.doctor14
+
+            else ->
+                R.drawable.doctor2
+        }
+    }
     override fun onSupportNavigateUp(): Boolean {
         finish()
         return true
